@@ -1,0 +1,29 @@
+
+.scraperCard{ 
+  width: 100%; 
+  border: 2px solid goldenrod; 
+  border-radius: 5px;  
+  margin-bottom: 10px; 
+  
+} 
+
+.scraperUl {    
+  text-align: left;
+  width: 100%;
+  list-style-type: none; 
+  margin: 0;  
+  padding: 0; 
+  overflow: hidden; 
+  
+}  
+
+
+
+.scraperkeys {  
+ font-size: 20px; 
+ text-align: left;
+} 
+
+.scraperValues {  
+margin-left: 10px;
+}
