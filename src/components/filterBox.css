@@ -1,0 +1,24 @@
+
+.filterBox {  
+  padding: 10px;
+} 
+
+.filterBoxHeader{ 
+  display: flex;  
+  justify-content: space-between; 
+  align-items: baseline; 
+} 
+
+h2{  
+  
+  text-align: left;
+} 
+
+.saveBtnFooter {   
+  margin-top: 20px; 
+  padding: 15px 0px;
+  display: flex;  
+  justify-content: flex-end;  
+  align-items: center;   
+  border-top: 2px solid #EEEEEE;
+}

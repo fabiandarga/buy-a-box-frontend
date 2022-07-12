@@ -2,9 +2,6 @@ import React from 'react';
 import './getScraper.css'
 import {useState, useEffect} from 'react';   
 
-
-
-
 function GetScraper() { 
   
   const [ scraper , setScraper]  = useState([]) 

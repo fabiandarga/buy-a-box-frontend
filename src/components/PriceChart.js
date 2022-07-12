@@ -1,4 +1,5 @@
-import React from 'react'   
+import React from 'react'    
+import Card from './Card.js'
 //import {useState, useEffect} from 'react';   
 import {CategoryScale} from 'chart.js';  
 import Chart from 'chart.js/auto';
@@ -48,7 +49,9 @@ const PriceChart =  () =>{
 
 
  const labels =  [ 'Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange' ];
-  return ( <div> 
+  return (  
+  <Card>
+  <div> 
     
     <Line   
     
@@ -84,7 +87,7 @@ const PriceChart =  () =>{
     
    
     </div> 
-    
+    </Card>
   );
 }
 
