@@ -9,15 +9,40 @@ import SchritteDropDown from './SchritteDropDown.js';
 import './filterBox.css' 
 
 function FilterBox(props) {  
+  
+  const items = props.items;
+  console.log('items',items); 
 
-  const productOptions =  [ 
-    { value: '2x2 Draft', label: '2x2 Draft' }, 
-    { value: '2x2 Collector', label: '2x2 Collector' },
-    { value: '2x2 set', label: '2x2 set' }, 
-    { value: '2x2 set', label: '2x2 set' }, 
-    { value: '2x2 set', label: '2x2 set' }
-    ]   
+  /*
+  const productSorted = items.reduce((acc, item) => {
+    const key = item.code 
+     if (acc[key] ) {
+      acc[key].push(item) 
+     } else{
+     acc[key] = [item] 
+     }
+    return acc
+  }, {})  
+  */
 
+  const productFilter =  items.map( (set) => {   
+    const code = set.code; 
+   //const [key, value] = set;
+    return  { 
+       value: code, label: code
+    }
+  })  
+
+
+  console.log('productFilter', productFilter);
+  
+  
+
+  const productOptions = productFilter
+      
+
+   console.log(productOptions);
+    
     const shopOptions = [ 
       { value: 'Shop 1', label: 'Shop 1' }, 
       { value: 'Amazon', label: 'Amazon' }

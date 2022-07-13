@@ -16,7 +16,8 @@ function Dashboard(props) {
     
     await fetch(SCRAPER_PATH)
       .then((response)=>response.json())
-      .then((data)=> {setAllItems(data)}) 
+      .then((data)=> {setAllItems(data) }) 
+
       .catch((err)=>(err)) 
   }
   
@@ -32,7 +33,9 @@ function Dashboard(props) {
       <PriceChart 
       items={filterItems} 
       />  
-      <FilterBox/>
+      <FilterBox 
+      items={filterItems} 
+      />
       <InfoText/>
     </div>
   )
