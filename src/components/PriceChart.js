@@ -43,7 +43,6 @@ const PriceChart =  (props) =>{
   <Card>
   <div> 
     <Line   
-    items = {props.items}
     data = {
       {  
       datasets: newDatasets,
