@@ -9,6 +9,7 @@ import SchritteDropDown from './SchritteDropDown.js';
 import './filterBox.css' 
 
 function FilterBox(props) {  
+  // const productOptions = props.setOptions.map()
   
   const items = props.items;
   console.log('items',items); 
@@ -25,9 +26,8 @@ function FilterBox(props) {
   }, {})  
   */
 
-  const productFilter =  items.map( (set) => {   
-    const code = set.code; 
-   //const [key, value] = set;
+  // props.setOptions = ['AFR', ...]
+  const productFilter =  props.setOptions.map( (code) => {   
     return  { 
        value: code, label: code
     }
