@@ -3,6 +3,8 @@ import InfoText from '../components/InfoText.js';
 import FilterBox from '../components/FilterBox.js';
 import PriceChart from '../components/PriceChart.js'; 
 
+const SCRAPER_PATH = 'https://buy-a-box-backend.herokuapp.com/scraper/all'; 
+
 function Dashboard(props) { 
 
   const [ allItems , setAllItems]  = useState([]) 
@@ -10,14 +12,12 @@ function Dashboard(props) {
     fetchRecordsData(); 
   },[]); //Dependancy Array  
  
-  const SCRAPER_PATH = 'https://buy-a-box-backend.herokuapp.com/scraper/all';
-
   const fetchRecordsData = async()=>{
     
     await fetch(SCRAPER_PATH)
       .then((response)=>response.json())
-      .then((data)=> { console.log(data); setAllItems(data)}) 
-      .catch((err)=>console.log(err)) 
+      .then((data)=> {setAllItems(data)}) 
+      .catch((err)=>(err)) 
   }
   
   const selectedSet = ['AFR', 'SNC',] 

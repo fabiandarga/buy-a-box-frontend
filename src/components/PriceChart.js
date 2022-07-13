@@ -14,21 +14,18 @@ const PriceChart =  (props) =>{
 
   const itemsSorted = props.items.reduce((acc, item) => {
     const key = item.shop + '/' + item.code + '/' + item.lang ; // 'miracle-games/AFR/eng' 
-    const date = item.date; 
-    console.log('date',date);
-    if (acc[key]) {
+     if (acc[key]) {
       acc[key].push(item) 
-    } else {
-    acc[key] = [item] 
-    }
+     } else{
+     acc[key] = [item] 
+     }
     return acc
   }, {})  
 
     const newDatasets =  Object.entries(itemsSorted).map( (set) => {   
-  
-    const data = set[1].sort((itemA,itemB) => new Date(itemA.date) - new Date(itemB.date));
-    console.log('data' , data); 
 
+    const data = set[1].sort((itemA,itemB) => new Date(itemA.date) - new Date(itemB.date));
+    
     return {  
       label: set[0], 
       data: data.map(item => item.price), 
@@ -37,9 +34,7 @@ const PriceChart =  (props) =>{
       borderWidth: 1
     }
   })
-  console.log('itemsSorted',itemsSorted);
-  console.log('newDatasets',newDatasets);
-
+ 
   // { 'miracle-games/AFR/deu': [item1, item2,...], 'trader-online/ORI/deu': [item1, ..], 'trader-online/AFR/deu': [item1, ..]}
  
  const labels =  ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']; 
