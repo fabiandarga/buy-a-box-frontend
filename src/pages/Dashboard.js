@@ -6,7 +6,7 @@ import PriceChart from '../components/PriceChart.js';
 
 
 
-function Dashboard() { 
+function Dashboard(props) { 
 
   const [ allItems , setAllItems]  = useState([]) 
   useEffect(()=>{
@@ -26,11 +26,12 @@ function Dashboard() {
       .catch((err)=>console.log(err)) 
   }
   
-  const selectedSet = ['AFR']
+  const selectedSet = ['AFR', 'SNC',] 
+  const selectedType = ['draft']
 
   const filterItems = allItems.filter((scraper, index)=>{  
 
-      return  selectedSet.includes(scraper.code)
+      return  selectedSet.includes(scraper.code) &&  selectedType.includes(scraper.type)
     
   }); 
 
