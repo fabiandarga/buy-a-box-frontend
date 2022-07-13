@@ -3,22 +3,16 @@ import InfoText from '../components/InfoText.js';
 import FilterBox from '../components/FilterBox.js';
 import PriceChart from '../components/PriceChart.js'; 
 
-
-
-
 function Dashboard(props) { 
 
   const [ allItems , setAllItems]  = useState([]) 
   useEffect(()=>{
     fetchRecordsData(); 
-   
   },[]); //Dependancy Array  
  
-  
   const SCRAPER_PATH = 'https://buy-a-box-backend.herokuapp.com/scraper/all';
 
   const fetchRecordsData = async()=>{
-    /*'http://localhost:4000/scraper/all'*/ 
     
     await fetch(SCRAPER_PATH)
       .then((response)=>response.json())
@@ -30,12 +24,8 @@ function Dashboard(props) {
   const selectedType = ['draft']
 
   const filterItems = allItems.filter((scraper, index)=>{  
-
-      return  selectedSet.includes(scraper.code) &&  selectedType.includes(scraper.type)
-    
+   return  selectedSet.includes(scraper.code) &&  selectedType.includes(scraper.type)
   }); 
-
-  console.log(filterItems);
 
   return (
     <div>  
