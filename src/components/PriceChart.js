@@ -14,25 +14,32 @@ const PriceChart =  (props) =>{
   // props.items = Array aus { date, lang, code, name, type, price, shop}
 
   const itemsSorted = props.items.reduce((acc, item) => {
-    const key = item.shop + '/' + item.code + '/' + item.lang // 'miracle-games/AFR/eng'
+    const key = item.shop + '/' + item.code + '/' + item.lang ; // 'miracle-games/AFR/eng' 
+    const date = item.date; 
+    console.log('date',date);
     if (acc[key]) {
       acc[key].push(item) 
     } else {
     acc[key] = [item] 
     }
     return acc
-  }, {}) 
+  }, {})  
+
   
-  const newDatasets =  Object.entries(itemsSorted).map( (set) => {  
+  const newDatasets =  Object.entries(itemsSorted).map( (set) => {   
+  
+    const data = set[1].sort((itemA,itemB) => new Date(itemA.date) - new Date(itemB.date));
+    console.log('data' , data); 
+
     return {  
       label: set[0], 
-      data: set[1].map(item => item.price), 
+      data: data.map(item => item.price), 
       backgroundColor: ['yellow'],  
       borderColor: ['red'],
       borderWidth: 1
     }
   })
-   
+  console.log('itemsSorted',itemsSorted);
   console.log('newDatasets',newDatasets);
 
   // { 'miracle-games/AFR/deu': [item1, item2,...], 'trader-online/ORI/deu': [item1, ..], 'trader-online/AFR/deu': [item1, ..]}
