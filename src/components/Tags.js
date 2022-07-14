@@ -5,15 +5,17 @@ import './tags.css'
 
 function Tags(props) { 
 
-  const productFilter = ['2x2 Collector', '2x2 Collector']
+  const productFilter = props.productOptions.map((item)=> {
+    return  item.value }); 
+
+  console.log('productFilter',productFilter);
+
 const shopFilter = ['Shop 1', ' Amazon'] 
 
   return (
     <div>   
       <div> 
-        < div className='tagscategory'> Shops</div>   
-       
-
+        < div className='tagscategory'> Shops</div>
         <div  className='allTags'> 
         {shopFilter.map((filter) => { 
          return <Tag>{filter}</Tag> 
@@ -25,7 +27,7 @@ const shopFilter = ['Shop 1', ' Amazon']
        <div className='allTags'> 
        {productFilter.map((filter) => { 
          return <Tag>{filter}</Tag> 
-       })}
+       })} 
         </div> 
       </div>
     </div>

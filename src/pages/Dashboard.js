@@ -8,23 +8,43 @@ const SCRAPER_PATH = 'https://buy-a-box-backend.herokuapp.com/scraper/all';
 function Dashboard(props) { 
 
   const [ allItems , setAllItems]  = useState([]) 
+
+  const [filterSetOptions, setFilterSetOptions] = useState([])
+  const [selectedSets, setSelectedSets] = useState(['AFR'])
+
   useEffect(()=>{
     fetchRecordsData(); 
-  },[]); //Dependancy Array  
+  }, []); //Dependancy Array  
  
   const fetchRecordsData = async()=>{
-    
     await fetch(SCRAPER_PATH)
       .then((response)=>response.json())
-      .then((data)=> {setAllItems(data)}) 
+      .then((data)=> {
+        calculateOptions(data);
+        setAllItems(data)
+      }) 
       .catch((err)=>(err)) 
   }
+
+  /**
+   * @param {Array} data 
+   */
+  const calculateOptions = (data) => {
+    const itemCodesUnique = data.reduce((array, item) => {
+      const code = item.code 
+      if (!array.includes(code)) {
+        array.push(code)
+      }
+      return array
+    }, [])  
+
+    setFilterSetOptions(itemCodesUnique)
+  }
   
-  const selectedSet = ['AFR', 'SNC',] 
   const selectedType = ['draft']
 
   const filterItems = allItems.filter((scraper, index)=>{  
-   return  selectedSet.includes(scraper.code) &&  selectedType.includes(scraper.type)
+    return  selectedSets.includes(scraper.code) &&  selectedType.includes(scraper.type)
   }); 
 
   return (
@@ -32,7 +52,13 @@ function Dashboard(props) {
       <PriceChart 
       items={filterItems} 
       />  
-      <FilterBox/>
+      <FilterBox  
+       selctedProducts = {selectedSets.map((code)=> ({value: code, label: code}))}
+       onProductsChange={ (selected)=> {setSelectedSets(selected.map((item)=> item.value))}}
+       items={filterItems}
+       setOptions={filterSetOptions}
+       // shopOptions=[..]
+      />
       <InfoText/>
     </div>
   )

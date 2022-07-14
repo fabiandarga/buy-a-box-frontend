@@ -6,18 +6,23 @@ import Popup from './Popup.js';
 import DropDownSelect from './DropDownSelect.js'; 
 import WojtekmajDaterangePicker from './WojtekmajDaterangePicker.js'; 
 import SchritteDropDown from './SchritteDropDown.js';
-import './filterBox.css' 
+import './filterBox.css'  
 
-function FilterBox(props) {  
 
-  const productOptions =  [ 
-    { value: '2x2 Draft', label: '2x2 Draft' }, 
-    { value: '2x2 Collector', label: '2x2 Collector' },
-    { value: '2x2 set', label: '2x2 set' }, 
-    { value: '2x2 set', label: '2x2 set' }, 
-    { value: '2x2 set', label: '2x2 set' }
-    ]   
+/**
+ * props.selctedShops 
+ * props.onShopsChange
+ * props.selctedProducts 
+ * props.onProductsChange
+ */
+function FilterBox(props) {   
 
+  const productFilter =  props.setOptions.map( (code) => {   
+    return  { 
+       value: code, label: code
+    }
+  })  
+    
     const shopOptions = [ 
       { value: 'Shop 1', label: 'Shop 1' }, 
       { value: 'Amazon', label: 'Amazon' }
@@ -36,8 +41,9 @@ function FilterBox(props) {
       <h2>Filter</h2> 
       <Button  onClick={togglePopup} text={'Open Filter'} /> 
       </div> 
-    <Tags/> 
-    
+    <Tags 
+    productOptions = {props.selctedProducts}
+    /> 
     { showPopup && <Popup  
     handleClose={togglePopup} 
     content= {  
@@ -49,7 +55,9 @@ function FilterBox(props) {
         />  
         <h3>product</h3> 
         <DropDownSelect 
-        options={productOptions}
+        options={productFilter} 
+        value= {props.selctedProducts} 
+        onChange= {props.onProductsChange}
         />  
         <h2>Zeit-Achse</h2>
         <WojtekmajDaterangePicker/> 
