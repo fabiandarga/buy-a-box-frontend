@@ -22,8 +22,6 @@ function FilterBox(props) {
        value: code, label: code
     }
   })  
-  
-  const productOptions = productFilter
     
     const shopOptions = [ 
       { value: 'Shop 1', label: 'Shop 1' }, 
@@ -57,7 +55,7 @@ function FilterBox(props) {
         />  
         <h3>product</h3> 
         <DropDownSelect 
-        options={productOptions} 
+        options={productFilter} 
         value= {props.selctedProducts} 
         onChange= {props.onProductsChange}
         />  
