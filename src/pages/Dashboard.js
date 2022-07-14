@@ -8,10 +8,8 @@ const SCRAPER_PATH = 'https://buy-a-box-backend.herokuapp.com/scraper/all';
 function Dashboard(props) { 
 
   const [ allItems , setAllItems]  = useState([]) 
-
   const [filterSetOptions, setFilterSetOptions] = useState([])
   const [selectedSets, setSelectedSets] = useState(['AFR']) 
-
   const [filterShopsOptions, setFilterShopsOptions] = useState([])
   const [selectedShops, setSelectedShops] = useState(['miracle-games'])
 
@@ -58,7 +56,6 @@ function Dashboard(props) {
 
   const filterItems = allItems.filter((scraper, index)=>{  
      
-
     if (selectedSets.length > 0 && !selectedSets.includes(scraper.code)) {
 
       return  false;
@@ -82,15 +79,13 @@ function Dashboard(props) {
       items={filterItems}  
       />  
       <FilterBox  
-      selectedShops = {selectedShops.map((shop)=> ({value: shop, label: shop}))} 
-      onShopsChange={ (selected)=> {setSelectedShops(selected.map((item)=> item.value))}}
-      shopOptions ={filterShopsOptions}
-
+       selectedShops = {selectedShops.map((shop)=> ({value: shop, label: shop}))} 
+       onShopsChange={ (selected)=> {setSelectedShops(selected.map((item)=> item.value))}}
+       shopOptions ={filterShopsOptions}
        selectedProducts = {selectedSets.map((code)=> ({value: code, label: code}))}
        onProductsChange={ (selected)=> {setSelectedSets(selected.map((item)=> item.value))}}
        items={filterItems}
        setOptions={filterSetOptions}
-       // shopOptions=[..]
       />
       <InfoText/>
     </div>

@@ -29,8 +29,6 @@ function FilterBox(props) {
       }
     })   
 
-    console.log('shopFilter',shopFilter); 
-
   const [showPopup, setShowPopup] = useState(false);
   
   const togglePopup = () => { 
