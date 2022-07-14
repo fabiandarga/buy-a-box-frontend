@@ -17,7 +17,6 @@ import './filterBox.css'
  */
 function FilterBox(props) {   
 
-  // props.setOptions = ['AFR', ...]
   const productFilter =  props.setOptions.map( (code) => {   
     return  { 
        value: code, label: code

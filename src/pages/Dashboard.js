@@ -10,7 +10,7 @@ function Dashboard(props) {
   const [ allItems , setAllItems]  = useState([]) 
 
   const [filterSetOptions, setFilterSetOptions] = useState([])
-  const [selectedSets, setSelectedSets] = useState(['AFR']) // TODO <- use setter from Dropdown change
+  const [selectedSets, setSelectedSets] = useState(['AFR'])
 
   useEffect(()=>{
     fetchRecordsData(); 
