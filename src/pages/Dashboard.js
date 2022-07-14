@@ -52,7 +52,9 @@ function Dashboard(props) {
       <PriceChart 
       items={filterItems} 
       />  
-      <FilterBox 
+      <FilterBox  
+       selctedProducts = {selectedSets.map((code)=> ({value: code, label: code}))}
+       onProductsChange={ (selected)=> {setSelectedSets(selected.map((item)=> item.value))}}
        items={filterItems}
        setOptions={filterSetOptions}
        // shopOptions=[..]

@@ -6,25 +6,16 @@ import Popup from './Popup.js';
 import DropDownSelect from './DropDownSelect.js'; 
 import WojtekmajDaterangePicker from './WojtekmajDaterangePicker.js'; 
 import SchritteDropDown from './SchritteDropDown.js';
-import './filterBox.css' 
+import './filterBox.css'  
 
-function FilterBox(props) {  
-  // const productOptions = props.setOptions.map()
-  
-  const items = props.items;
-  console.log('items',items); 
 
-  /*
-  const productSorted = items.reduce((acc, item) => {
-    const key = item.code 
-     if (acc[key] ) {
-      acc[key].push(item) 
-     } else{
-     acc[key] = [item] 
-     }
-    return acc
-  }, {})  
-  */
+/**
+ * props.selctedShops 
+ * props.onShopsChange
+ * props.selctedProducts 
+ * props.onProductsChange
+ */
+function FilterBox(props) {   
 
   // props.setOptions = ['AFR', ...]
   const productFilter =  props.setOptions.map( (code) => {   
@@ -32,16 +23,8 @@ function FilterBox(props) {
        value: code, label: code
     }
   })  
-
-
-  console.log('productFilter', productFilter);
   
-  
-
   const productOptions = productFilter
-      
-
-   console.log(productOptions);
     
     const shopOptions = [ 
       { value: 'Shop 1', label: 'Shop 1' }, 
@@ -61,8 +44,9 @@ function FilterBox(props) {
       <h2>Filter</h2> 
       <Button  onClick={togglePopup} text={'Open Filter'} /> 
       </div> 
-    <Tags/> 
-    
+    <Tags 
+    productOptions = {props.selctedProducts}
+    /> 
     { showPopup && <Popup  
     handleClose={togglePopup} 
     content= {  
@@ -74,7 +58,9 @@ function FilterBox(props) {
         />  
         <h3>product</h3> 
         <DropDownSelect 
-        options={productOptions}
+        options={productOptions} 
+        value= {props.selctedProducts} 
+        onChange= {props.onProductsChange}
         />  
         <h2>Zeit-Achse</h2>
         <WojtekmajDaterangePicker/> 
