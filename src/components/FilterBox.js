@@ -22,12 +22,15 @@ function FilterBox(props) {
        value: code, label: code
     }
   })  
-    
-    const shopOptions = [ 
-      { value: 'Shop 1', label: 'Shop 1' }, 
-      { value: 'Amazon', label: 'Amazon' }
-      ] 
-  
+
+    const shopFilter =  props.shopOptions.map( (shop) => {   
+      return  { 
+         value: shop, label: shop
+      }
+    })   
+
+    console.log('shopFilter',shopFilter); 
+
   const [showPopup, setShowPopup] = useState(false);
   
   const togglePopup = () => { 
@@ -42,7 +45,8 @@ function FilterBox(props) {
       <Button  onClick={togglePopup} text={'Open Filter'} /> 
       </div> 
     <Tags 
-    productOptions = {props.selctedProducts}
+    productOptions = {props.selectedProducts} 
+    shopOptions = {props.selectedShops}
     /> 
     { showPopup && <Popup  
     handleClose={togglePopup} 
@@ -51,12 +55,14 @@ function FilterBox(props) {
         <h2>Filter</h2>
         <h3>Shops</h3> 
         <DropDownSelect 
-        options={shopOptions}
+        options={shopFilter} 
+        value= {props.selectedShops} 
+        onChange= {props.onShopsChange}
         />  
         <h3>product</h3> 
         <DropDownSelect 
         options={productFilter} 
-        value= {props.selctedProducts} 
+        value= {props.selectedProducts} 
         onChange= {props.onProductsChange}
         />  
         <h2>Zeit-Achse</h2>

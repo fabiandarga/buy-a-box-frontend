@@ -9,8 +9,11 @@ function Tags(props) {
     return  item.value }); 
 
   console.log('productFilter',productFilter);
+ 
+  const shopFilter = props.shopOptions.map((item)=> {
+    return  item.value }); 
 
-const shopFilter = ['Shop 1', ' Amazon'] 
+//const shopFilter = ['Shop 1', ' Amazon'] 
 
   return (
     <div>   

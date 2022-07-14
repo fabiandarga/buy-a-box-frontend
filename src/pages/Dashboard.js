@@ -10,7 +10,10 @@ function Dashboard(props) {
   const [ allItems , setAllItems]  = useState([]) 
 
   const [filterSetOptions, setFilterSetOptions] = useState([])
-  const [selectedSets, setSelectedSets] = useState(['AFR'])
+  const [selectedSets, setSelectedSets] = useState(['AFR']) 
+
+  const [filterShopsOptions, setFilterShopsOptions] = useState([])
+  const [selectedShops, setSelectedShops] = useState(['miracle-games'])
 
   useEffect(()=>{
     fetchRecordsData(); 
@@ -36,24 +39,54 @@ function Dashboard(props) {
         array.push(code)
       }
       return array
+    }, [])   
+
+    const itemShopsUnique = data.reduce((array, item) => {
+      const shop = item.shop
+      if (!array.includes(shop)) {
+        array.push(shop)
+      }
+      return array
     }, [])  
+
+    setFilterShopsOptions(itemShopsUnique)
 
     setFilterSetOptions(itemCodesUnique)
   }
-  
+
   const selectedType = ['draft']
 
   const filterItems = allItems.filter((scraper, index)=>{  
-    return  selectedSets.includes(scraper.code) &&  selectedType.includes(scraper.type)
-  }); 
+     
+
+    if (selectedSets.length > 0 && !selectedSets.includes(scraper.code)) {
+
+      return  false;
+
+    } 
+    if (selectedType.length > 0 && !selectedType.includes(scraper.type)) {
+
+      return false;
+
+    } 
+    if (selectedShops.length > 0 && !selectedShops.includes(scraper.shop)) {
+
+      return false
+    }
+    return  true;
+  });  
 
   return (
     <div>  
       <PriceChart 
-      items={filterItems} 
+      items={filterItems}  
       />  
       <FilterBox  
-       selctedProducts = {selectedSets.map((code)=> ({value: code, label: code}))}
+      selectedShops = {selectedShops.map((shop)=> ({value: shop, label: shop}))} 
+      onShopsChange={ (selected)=> {setSelectedShops(selected.map((item)=> item.value))}}
+      shopOptions ={filterShopsOptions}
+
+       selectedProducts = {selectedSets.map((code)=> ({value: code, label: code}))}
        onProductsChange={ (selected)=> {setSelectedSets(selected.map((item)=> item.value))}}
        items={filterItems}
        setOptions={filterSetOptions}
