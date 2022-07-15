@@ -54,20 +54,15 @@ function Dashboard(props) {
 
   const selectedType = ['draft']
 
-  const filterItems = allItems.filter((scraper, index)=>{  
+  const filterItems = allItems.filter((item, index)=>{  
      
-    if (selectedSets.length > 0 && !selectedSets.includes(scraper.code)) {
-
+    if (selectedSets.length > 0 && !selectedSets.includes(item.code)) {
       return  false;
-
     } 
-    if (selectedType.length > 0 && !selectedType.includes(scraper.type)) {
-
+    if (selectedType.length > 0 && !selectedType.includes(item.type)) {
       return false;
-
     } 
-    if (selectedShops.length > 0 && !selectedShops.includes(scraper.shop)) {
-
+    if (selectedShops.length > 0 && !selectedShops.includes(item.shop)) {
       return false
     }
     return  true;

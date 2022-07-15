@@ -17,17 +17,9 @@ import './filterBox.css'
  */
 function FilterBox(props) {   
 
-  const productFilter =  props.setOptions.map( (code) => {   
-    return  { 
-       value: code, label: code
-    }
-  })  
+  const productFilter =  props.setOptions.map( (code) => ({value: code, label: code}))  
 
-    const shopFilter =  props.shopOptions.map( (shop) => {   
-      return  { 
-         value: shop, label: shop
-      }
-    })   
+    const shopFilter =  props.shopOptions.map( (shop) => ({value: shop, label: shop}))   
 
   const [showPopup, setShowPopup] = useState(false);
   
