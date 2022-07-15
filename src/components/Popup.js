@@ -1,18 +1,19 @@
-import React from "react";
-import "./popup.css";
+import React from 'react';
+import './popup.css';
 
 function Popup(props) {
+  const { handleClose, content } = props;
   return (
     <div className="popupBoxContent">
       <div className="popupBox">
         <div className="box">
           <div className="closeContent">
             <h2>Title</h2>
-            <div className="close" onClick={props.handleClose}>
+            <button type="button" className="close" onClick={handleClose}>
               X
-            </div>
+            </button>
           </div>
-          {props.content}
+          {content}
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
-import React from "react";
-import makeAnimated from "react-select/animated";
-import Select from "react-select";
+import React from 'react';
+import makeAnimated from 'react-select/animated';
+import Select from 'react-select';
 
 const animatedComponents = makeAnimated();
 /**
@@ -9,15 +9,16 @@ const animatedComponents = makeAnimated();
  * props.onChange
  */
 function DropDownSelect(props) {
+  const { options, value, onChange } = props;
   return (
     <div>
       <Select
-        defaultValue={props.value}
+        defaultValue={value}
         closeMenuOnSelect={false}
         components={animatedComponents}
-        onChange={props.onChange}
+        onChange={onChange}
         isMulti
-        options={props.options}
+        options={options}
       />
     </div>
   );

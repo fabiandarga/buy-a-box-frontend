@@ -1,12 +1,13 @@
-import React from "react";
-import Tag from "./Tag";
+import React from 'react';
+import Tag from './Tag';
 
-import "./tags.css";
+import './tags.css';
 
 function Tags(props) {
-  const productFilter = props.productOptions.map((item) => item.value);
+  const { productOptions, shopOptions } = props;
+  const productFilter = productOptions.map((item) => item.value);
 
-  const shopFilter = props.shopOptions.map((item) => item.value);
+  const shopFilter = shopOptions.map((item) => item.value);
 
   return (
     <div>

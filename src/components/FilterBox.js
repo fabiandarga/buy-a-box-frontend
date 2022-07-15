@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import Card from "./Card.js";
-import Button from "./Button.js";
-import Tags from "./Tags.js";
-import Popup from "./Popup.js";
-import DropDownSelect from "./DropDownSelect.js";
-import WojtekmajDaterangePicker from "./WojtekmajDaterangePicker.js";
-import SchritteDropDown from "./SchritteDropDown.js";
-import "./filterBox.css";
+import React, { useState } from 'react';
+import Card from './Card';
+import Button from './Button';
+import Tags from './Tags';
+import Popup from './Popup';
+import DropDownSelect from './DropDownSelect';
+import WojtekmajDaterangePicker from './WojtekmajDaterangePicker';
+import SchritteDropDown from './SchritteDropDown';
+import './filterBox.css';
 
 /**
  * props.selctedShops
@@ -15,12 +15,20 @@ import "./filterBox.css";
  * props.onProductsChange
  */
 function FilterBox(props) {
-  const productFilter = props.setOptions.map((code) => ({
+  const {
+    setOptions,
+    shopOptions,
+    selectedProducts,
+    selectedShops,
+    onShopsChange,
+    onProductsChange,
+  } = props;
+  const productFilter = setOptions.map((code) => ({
     value: code,
     label: code,
   }));
 
-  const shopFilter = props.shopOptions.map((shop) => ({
+  const shopFilter = shopOptions.map((shop) => ({
     value: shop,
     label: shop,
   }));
@@ -38,10 +46,7 @@ function FilterBox(props) {
           <h2>Filter</h2>
           <Button onClick={togglePopup} text="Open Filter" />
         </div>
-        <Tags
-          productOptions={props.selectedProducts}
-          shopOptions={props.selectedShops}
-        />
+        <Tags productOptions={selectedProducts} shopOptions={selectedShops} />
         {showPopup && (
           <Popup
             handleClose={togglePopup}
@@ -51,14 +56,14 @@ function FilterBox(props) {
                 <h3>Shops</h3>
                 <DropDownSelect
                   options={shopFilter}
-                  value={props.selectedShops}
-                  onChange={props.onShopsChange}
+                  value={selectedShops}
+                  onChange={onShopsChange}
                 />
                 <h3>product</h3>
                 <DropDownSelect
                   options={productFilter}
-                  value={props.selectedProducts}
-                  onChange={props.onProductsChange}
+                  value={selectedProducts}
+                  onChange={onProductsChange}
                 />
                 <h2>Zeit-Achse</h2>
                 <WojtekmajDaterangePicker />

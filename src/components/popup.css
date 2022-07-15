@@ -28,9 +28,11 @@
   border-bottom: 2px solid #EEEEEE;
 }
 
-.close{  
+.close{   
+  border: none;
   padding-left: 20px;
-  font-size: 25px;  
+  font-size: 25px;   
+  background-color: white;
   color: #8E8E8E; 
   cursor: pointer;
  } 

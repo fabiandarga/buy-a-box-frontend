@@ -1,14 +1,15 @@
-import React from "react";
-import { CategoryScale } from "chart.js";
-import Chart from "chart.js/auto";
-import { Line } from "react-chartjs-2";
-import Card from "./Card.js";
+import React from 'react';
+import { CategoryScale } from 'chart.js';
+import Chart from 'chart.js/auto';
+import { Line } from 'react-chartjs-2';
+import Card from './Card';
 
 function PriceChart(props) {
+  const { items } = props;
   Chart.register(CategoryScale);
 
   // props.items = Array aus { date, lang, code, name, type, price, shop}
-  const itemsSorted = props.items.reduce((acc, item) => {
+  const itemsSorted = items.reduce((acc, item) => {
     const key = `${item.shop}/${item.code}/${item.lang}`;
     if (acc[key]) {
       acc[key].push(item);
@@ -19,15 +20,13 @@ function PriceChart(props) {
   }, {});
 
   const newDatasets = Object.entries(itemsSorted).map((set) => {
-    const data = set[1].sort(
-      (itemA, itemB) => new Date(itemA.date) - new Date(itemB.date)
-    );
+    const data = set[1].sort((itemA, itemB) => new Date(itemA.date) - new Date(itemB.date));
 
     return {
       label: set[0],
       data: data.map((item) => ({ x: item.date, y: item.price })),
-      backgroundColor: ["yellow"],
-      borderColor: ["red"],
+      backgroundColor: ['yellow'],
+      borderColor: ['red'],
       borderWidth: 1,
     };
   });

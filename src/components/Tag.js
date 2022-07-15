@@ -1,7 +1,8 @@
-import React from "react";
+import React from 'react';
 
 function Tag(props) {
-  return <div className="tagsName">{props.children}</div>;
+  const { children } = props;
+  return <div className="tagsName">{children}</div>;
 }
 
 export default Tag;

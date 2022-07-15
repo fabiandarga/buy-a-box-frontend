@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from "react";
-import InfoText from "../components/InfoText.js";
-import FilterBox from "../components/FilterBox.js";
-import PriceChart from "../components/PriceChart.js";
+import React, { useState, useEffect } from 'react';
+import InfoText from '../components/InfoText';
+import FilterBox from '../components/FilterBox';
+import PriceChart from '../components/PriceChart';
 
-const SCRAPER_PATH = "https://buy-a-box-backend.herokuapp.com/scraper/all";
+const SCRAPER_PATH = 'https://buy-a-box-backend.herokuapp.com/scraper/all';
 
-function Dashboard(props) {
+function Dashboard() {
   const [allItems, setAllItems] = useState([]);
   const [filterSetOptions, setFilterSetOptions] = useState([]);
-  const [selectedSets, setSelectedSets] = useState(["AFR"]);
+  const [selectedSets, setSelectedSets] = useState(['AFR']);
   const [filterShopsOptions, setFilterShopsOptions] = useState([]);
-  const [selectedShops, setSelectedShops] = useState(["miracle-games"]);
+  const [selectedShops, setSelectedShops] = useState(['miracle-games']);
 
   useEffect(() => {
+    // eslint-disable-next-line no-use-before-define
     fetchRecordsData();
   }, []); // Dependancy Array
 
@@ -20,6 +21,7 @@ function Dashboard(props) {
     await fetch(SCRAPER_PATH)
       .then((response) => response.json())
       .then((data) => {
+        // eslint-disable-next-line no-use-before-define
         calculateOptions(data);
         setAllItems(data);
       })
@@ -51,9 +53,9 @@ function Dashboard(props) {
     setFilterSetOptions(itemCodesUnique);
   };
 
-  const selectedType = ["draft"];
+  const selectedType = ['draft'];
 
-  const filterItems = allItems.filter((item, index) => {
+  const filterItems = allItems.filter((item) => {
     if (selectedSets.length > 0 && !selectedSets.includes(item.code)) {
       return false;
     }
