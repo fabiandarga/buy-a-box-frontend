@@ -5,12 +5,9 @@ import './tags.css'
 
 function Tags(props) { 
 
-  const productFilter = props.productOptions.map((item)=> {
-    return  item.value }); 
+  const productFilter = props.productOptions.map((item)=> item.value ); 
 
-  console.log('productFilter',productFilter);
-
-const shopFilter = ['Shop 1', ' Amazon'] 
+  const shopFilter = props.shopOptions.map((item)=> item.value ); 
 
   return (
     <div>   
