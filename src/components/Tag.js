@@ -1,10 +1,7 @@
-import React from 'react'
-
+import React from "react";
 
 function Tag(props) {
-  return (
-    <div className='tagsName'>{props.children}</div>
-  )
+  return <div className="tagsName">{props.children}</div>;
 }
 
-export default Tag
+export default Tag;
