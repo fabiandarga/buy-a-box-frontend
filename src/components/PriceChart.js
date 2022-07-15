@@ -1,6 +1,5 @@
 import React from 'react'    
-import Card from './Card.js'
-//import {useState, useEffect} from 'react';   
+import Card from './Card.js' 
 import {CategoryScale} from 'chart.js';  
 import Chart from 'chart.js/auto';
 import { Line } from 'react-chartjs-2';   
@@ -8,12 +7,10 @@ import { Line } from 'react-chartjs-2';
 
 const PriceChart =  (props) =>{ 
   Chart.register(CategoryScale); 
- 
-   // input: einzelne items (preis pro Tag für ein produkt)
-  // props.items = Array aus { date, lang, code, name, type, price, shop}
 
+  // props.items = Array aus { date, lang, code, name, type, price, shop}
   const itemsSorted = props.items.reduce((acc, item) => {
-    const key = item.shop + '/' + item.code + '/' + item.lang ; // 'miracle-games/AFR/eng' 
+    const key = item.shop + '/' + item.code + '/' + item.lang ; 
      if (acc[key]) {
       acc[key].push(item) 
      } else{
@@ -28,17 +25,13 @@ const PriceChart =  (props) =>{
     
     return {  
       label: set[0], 
-      data: data.map(item => item.price), 
+      data: data.map(item => ({x:item.date, y:item.price})), 
       backgroundColor: ['yellow'],  
       borderColor: ['red'],
       borderWidth: 1
     }
   })
  
-  // { 'miracle-games/AFR/deu': [item1, item2,...], 'trader-online/ORI/deu': [item1, ..], 'trader-online/AFR/deu': [item1, ..]}
- 
- const labels =  ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']; 
-
   return (  
   <Card>
   <div> 
@@ -46,7 +39,6 @@ const PriceChart =  (props) =>{
     data = {
       {  
       datasets: newDatasets,
-      labels: labels,
     }
   } 
     height = {400} 
