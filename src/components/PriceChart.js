@@ -10,7 +10,7 @@ function PriceChart(props) {
 
   // props.items = Array aus { date, lang, code, name, type, price, shop}
   const itemsSorted = items.reduce((acc, item) => {
-    const key = `${item.shop}/${item.code}/${item.lang}`;
+    const key = `${item.code} ${item.lang.toUpperCase()} (${item.shop})`;
     if (acc[key]) {
       acc[key].push(item);
     } else {
@@ -42,6 +42,15 @@ function PriceChart(props) {
           width={600}
           options={{
             maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'bottom',
+                align: 'start',
+                labels: {
+                  boxWidth: 20,
+                },
+              },
+            },
           }}
         />
       </div>
