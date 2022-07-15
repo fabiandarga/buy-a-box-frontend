@@ -28,7 +28,9 @@ const PriceChart =  (props) =>{
     
     return {  
       label: set[0], 
-      data: data.map(item => item.price), 
+      data: data.map(item => { 
+       return {x:item.date, y:item.price} 
+      }), 
       backgroundColor: ['yellow'],  
       borderColor: ['red'],
       borderWidth: 1
@@ -37,7 +39,7 @@ const PriceChart =  (props) =>{
  
   // { 'miracle-games/AFR/deu': [item1, item2,...], 'trader-online/ORI/deu': [item1, ..], 'trader-online/AFR/deu': [item1, ..]}
  
- const labels =  ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']; 
+ //const labels =  ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']; 
 
   return (  
   <Card>
@@ -46,7 +48,7 @@ const PriceChart =  (props) =>{
     data = {
       {  
       datasets: newDatasets,
-      labels: labels,
+      //labels: labels,
     }
   } 
     height = {400} 
