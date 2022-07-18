@@ -1,4 +1,4 @@
-import React, {useState} from 'react' 
+import React, {useState } from 'react' 
 import Card from './Card.js'
 import Button from './Button.js';  
 import Tags from './Tags.js';   
@@ -13,19 +13,21 @@ import './filterBox.css'
  * props.selctedShops 
  * props.onShopsChange
  * props.selctedProducts 
- * props.onProductsChange
+ * props.onProductsChange 
+ * props.setFrom
+ * props.setTo
  */
 function FilterBox(props) {   
 
   const productFilter =  props.setOptions.map( (code) => ({value: code, label: code}))  
 
-    const shopFilter =  props.shopOptions.map( (shop) => ({value: shop, label: shop}))   
+  const shopFilter =  props.shopOptions.map( (shop) => ({value: shop, label: shop}))   
 
-  const [showPopup, setShowPopup] = useState(false);
-  
+  const [showPopup, setShowPopup] = useState(false);  
+
   const togglePopup = () => { 
     setShowPopup(!showPopup)
-  }
+  } 
 
   return ( 
     <Card>
@@ -56,10 +58,18 @@ function FilterBox(props) {
         onChange= {props.onProductsChange}
         />  
         <h2>Zeit-Achse</h2>
-        <WojtekmajDaterangePicker/> 
-        <SchritteDropDown /> 
-        <div className='saveBtnFooter' >
-        <Button onClick={togglePopup} text={'Save'} ></Button> 
+        <WojtekmajDaterangePicker  
+        from={props.from} 
+        to={props.to}
+        setFrom={props.setFrom} 
+        setTo={props.setTo}
+        /> 
+        <SchritteDropDown 
+        setFrom={props.setFrom} 
+        setTo={props.setTo}
+        /> 
+        <div className='saveBtnFooter' > 
+          <Button  onClick={() => { props.onSave() ; togglePopup() }} text={'Save'} ></Button>
         </div> 
       </div>
     }

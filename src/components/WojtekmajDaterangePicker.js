@@ -1,19 +1,24 @@
-import React,{useState} from 'react' 
- 
-
+import React from 'react' 
 import DateRangePicker from "@wojtekmaj/react-daterange-picker";
 
 
-function WojtekmajDaterangePicker() { 
+function WojtekmajDaterangePicker(props) { 
   
-  const [value, onChange] = useState([new Date(), new Date()]);
+ // setFrom={props.setFrom} setTo={props.setTo}
+ // new Date().toISOString().slice(0,10)
+ const onChangeDateRangePickerHandler = (event) => {  
+  console.log('onChangeDateRangePickerHandler',new Date(event[0]).toISOString().slice(0,10), new Date(event[1] ).toISOString().slice(0,10));
+    props.setFrom(new Date(event[0]).toISOString().slice(0,10)); 
+    props.setTo(new Date(event[1] ).toISOString().slice(0,10)); 
+ }
 
   return (
     <div> 
       <h3>Zeitrahmen</h3> 
       <DateRangePicker  
-      onChange={onChange}  
-      value={value} />
+      onChange={onChangeDateRangePickerHandler}  
+      value={[props.to, props.from]} 
+      />
     </div>
   )
 }
