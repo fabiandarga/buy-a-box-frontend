@@ -13,6 +13,9 @@ import './filterBox.css';
  * props.onShopsChange
  * props.selctedProducts
  * props.onProductsChange
+ * props.setFrom
+ * props.setTo
+ * props.onSave()
  */
 function FilterBox(props) {
   const {
@@ -22,16 +25,16 @@ function FilterBox(props) {
     selectedShops,
     onShopsChange,
     onProductsChange,
+    onSave,
+    setFrom,
+    setTo,
+    from,
+    to,
   } = props;
-  const productFilter = setOptions.map((code) => ({
-    value: code,
-    label: code,
-  }));
 
-  const shopFilter = shopOptions.map((shop) => ({
-    value: shop,
-    label: shop,
-  }));
+  const productFilter = setOptions.map((code) => ({ value: code, label: code }));
+
+  const shopFilter = shopOptions.map((shop) => ({ value: shop, label: shop }));
 
   const [showPopup, setShowPopup] = useState(false);
 
@@ -66,10 +69,16 @@ function FilterBox(props) {
                   onChange={onProductsChange}
                 />
                 <h2>Zeit-Achse</h2>
-                <WojtekmajDaterangePicker />
-                <SchritteDropDown />
+                <WojtekmajDaterangePicker from={from} to={to} setFrom={setFrom} setTo={setTo} />
+                <SchritteDropDown setFrom={setFrom} setTo={setTo} />
                 <div className="saveBtnFooter">
-                  <Button onClick={togglePopup} text="Save" />
+                  <Button
+                    onClick={() => {
+                      onSave();
+                      togglePopup();
+                    }}
+                    text="Save"
+                  />
                 </div>
               </div>
             }
