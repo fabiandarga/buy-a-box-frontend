@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import InfoText from '../components/InfoText';
 import FilterBox from '../components/FilterBox';
 import PriceChart from '../components/PriceChart';
+import './dashboard.css';
 
 // http://localhost:4000/scraper/all?from=2022-07-14&to=2022-07-14
 const SCRAPER_PATH = 'https://buy-a-box-backend.herokuapp.com/scraper/all';
@@ -90,31 +91,33 @@ function Dashboard() {
   return (
     <div>
       <PriceChart items={filterItems} />
-      <FilterBox
-        selectedShops={selectedShops.map((shop) => ({
-          value: shop,
-          label: shop,
-        }))}
-        onShopsChange={(selected) => {
-          setSelectedShops(selected.map((item) => item.value));
-        }}
-        shopOptions={filterShopsOptions}
-        selectedProducts={selectedSets.map((code) => ({
-          value: code,
-          label: code,
-        }))}
-        onProductsChange={(selected) => {
-          setSelectedSets(selected.map((item) => item.value));
-        }}
-        items={filterItems}
-        setOptions={filterSetOptions}
-        from={from}
-        to={to}
-        setFrom={setFrom}
-        setTo={setTo}
-        onSave={filterSaveHandler}
-      />
-      <InfoText />
+      <div className="FilterBox-InfoText">
+        <FilterBox
+          selectedShops={selectedShops.map((shop) => ({
+            value: shop,
+            label: shop,
+          }))}
+          onShopsChange={(selected) => {
+            setSelectedShops(selected.map((item) => item.value));
+          }}
+          shopOptions={filterShopsOptions}
+          selectedProducts={selectedSets.map((code) => ({
+            value: code,
+            label: code,
+          }))}
+          onProductsChange={(selected) => {
+            setSelectedSets(selected.map((item) => item.value));
+          }}
+          items={filterItems}
+          setOptions={filterSetOptions}
+          from={from}
+          to={to}
+          setFrom={setFrom}
+          setTo={setTo}
+          onSave={filterSaveHandler}
+        />
+        <InfoText />
+      </div>
     </div>
   );
 }

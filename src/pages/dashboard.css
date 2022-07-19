@@ -1,0 +1,12 @@
+
+.FilterBox-InfoText{  
+  display: flex; 
+  flex-direction: column;
+} 
+
+@media ( min-width: 800px ) {
+	.FilterBox-InfoText { 
+    flex-direction: row; 
+    gap: 10px;
+	}
+}
