@@ -8,7 +8,7 @@ import Impressum from './pages/Impressum';
 
 function App() {
   return (
-    <div>
+    <div className="for-desktop">
       <Header />
       <Routes>
         <Route
