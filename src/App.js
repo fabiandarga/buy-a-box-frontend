@@ -8,14 +8,14 @@ import Impressum from './pages/Impressum';
 
 function App() {
   return (
-    <div>
+    <div className="for-desktop">
       <Header />
       <Routes>
         <Route
           path="/"
           element={
             <div>
-              <div className="App">
+              <div className="Dashboard">
                 <Dashboard />
               </div>
             </div>
