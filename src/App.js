@@ -9,21 +9,21 @@ import Impressum from './pages/Impressum';
 function App() {
   return (
     <div>
+      <Header />
       <Routes>
         <Route
           path="/"
           element={
             <div>
-              <Header />
               <div className="App">
                 <Dashboard />
               </div>
-              <Footer />
             </div>
           }
         />
         <Route path="/Impressum" element={<Impressum />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
