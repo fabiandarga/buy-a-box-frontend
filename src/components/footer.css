@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+.footer { 
+  background-color: #6C7279;  
+  color: #FFFFFF;
+  padding: 20px; 
+  text-align: center;  
+  font-Size: 11px;
+} 
+
+.footer-logoName { 
+  font-size: 14px; 
+  font-weight: bold;  
+  font-family: 'Lobster', cursive; 
+  text-align: center;
+} 
+
+.footer-content-item { 
+  margin: 10px 0px;
+} 
+
+.developer-content {  
+  margin: 10px 0px;
+} 
+
+.developer { 
+  margin-bottom: 5px;
+} 
+
+.Impressum-link{ 
+ margin-bottom: 10px;
+}
