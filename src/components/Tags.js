@@ -15,7 +15,7 @@ function Tags(props) {
         <div className="tagscategory"> Shops</div>
         <div className="allTags">
           {shopFilter.map((filter) => (
-            <Tag>{filter}</Tag>
+            <Tag key={filter}>{filter}</Tag>
           ))}
         </div>
       </div>
@@ -23,7 +23,7 @@ function Tags(props) {
         <div className="tagscategory">Products</div>
         <div className="allTags">
           {productFilter.map((filter) => (
-            <Tag>{filter}</Tag>
+            <Tag key={filter}>{filter}</Tag>
           ))}
         </div>
       </div>

@@ -91,12 +91,18 @@ function Dashboard() {
     <div>
       <PriceChart items={filterItems} />
       <FilterBox
-        selectedShops={selectedShops.map((shop) => ({ value: shop, label: shop }))}
+        selectedShops={selectedShops.map((shop) => ({
+          value: shop,
+          label: shop,
+        }))}
         onShopsChange={(selected) => {
           setSelectedShops(selected.map((item) => item.value));
         }}
         shopOptions={filterShopsOptions}
-        selectedProducts={selectedSets.map((code) => ({ value: code, label: code }))}
+        selectedProducts={selectedSets.map((code) => ({
+          value: code,
+          label: code,
+        }))}
         onProductsChange={(selected) => {
           setSelectedSets(selected.map((item) => item.value));
         }}
