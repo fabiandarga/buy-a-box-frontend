@@ -7,7 +7,6 @@ function WojtekmajDaterangePicker(props) {
  // setFrom={props.setFrom} setTo={props.setTo}
  // new Date().toISOString().slice(0,10)
  const onChangeDateRangePickerHandler = (event) => {  
-  console.log('onChangeDateRangePickerHandler',new Date(event[0]).toISOString().slice(0,10), new Date(event[1] ).toISOString().slice(0,10));
     props.setFrom(new Date(event[0]).toISOString().slice(0,10)); 
     props.setTo(new Date(event[1] ).toISOString().slice(0,10)); 
  }

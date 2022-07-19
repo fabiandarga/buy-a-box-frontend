@@ -13,25 +13,23 @@ function Dashboard(props) {
   const [selectedSets, setSelectedSets] = useState(['AFR']);
   const [filterShopsOptions, setFilterShopsOptions] = useState([]);
   const [selectedShops, setSelectedShops] = useState(['miracle-games']);
-  const [from , setFrom] = useState('2022-07-17');
-  const [to, setTo] = useState('2022-07-14');
-
-  useEffect( () => { 
-    console.log('from', from);
-  }, [ from]) 
-
-  useEffect( () => { 
-    console.log('to', to);
-  }, [ to])
+  const [from , setFrom] = useState(new Date(Date.now() - 2628000000).toISOString().slice(0,10));
+  const [to, setTo] = useState(new Date().toISOString().slice(0,10));
 
   useEffect(()=>{
     fetchData(); 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); //Dependancy Array  
  
-  const fetchData = async()=>{ 
-
-    await fetch(SCRAPER_PATH + '?from=' + from + '&to=' + to)
+  const fetchData = async(from,to)=>{ 
+    let url = new URL(SCRAPER_PATH); 
+    if (from) {
+      url.searchParams.append('from', from)
+    }
+    if (to) {
+      url.searchParams.append('to', to)
+    }
+    await fetch(url)
       .then((response)=>response.json())
       .then((data)=> {
         calculateOptions(data);
@@ -39,11 +37,6 @@ function Dashboard(props) {
       }) 
       .catch((err)=>(err)) 
   } 
-
-  // New code ↓↓↓↓ 
- // http://localhost:4000/scraper/all?from=2022-07-14&to=2022-07-14
- 
-  // New code ↑↑↑↑
 
   /**
    * @param {Array} data 
@@ -74,7 +67,7 @@ function Dashboard(props) {
    // from und to  
    // request zum server mit from und to 
    //    fetch data  
-   fetchData();
+   fetchData(from, to);
   }
 
   const selectedType = ['draft']

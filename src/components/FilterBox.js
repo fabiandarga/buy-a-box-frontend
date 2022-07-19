@@ -8,7 +8,6 @@ import WojtekmajDaterangePicker from './WojtekmajDaterangePicker.js';
 import SchritteDropDown from './SchritteDropDown.js';
 import './filterBox.css'  
 
-
 /**
  * props.selctedShops 
  * props.onShopsChange
