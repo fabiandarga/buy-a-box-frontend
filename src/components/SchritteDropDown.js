@@ -21,7 +21,7 @@ function SchritteDropDown(props) {
 
   return (
     <div>
-      <h3>Schritte</h3>
+      <div className="filter-titel">Schritte</div>
       <Select onChange={onChangeDateHandler} options={SchritteOption} />
     </div>
   );

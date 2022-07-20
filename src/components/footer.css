@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
-.footer { 
+.footer {  
+  box-sizing: border-box;
   width: 100%;
   background-color: #6C7279;  
   color: #FFFFFF;
@@ -50,13 +51,11 @@
     gap: 10px;
 	}  
 
-  .developer-content {  
-    margin: 15px 0px;
+  .developer { 
+    margin-bottom: 0;
   } 
   
-  .developer { 
-    margin-bottom: 8px;
-  } 
+  
   
   .Impressum-link{ 
    margin-bottom: 8px;
@@ -64,9 +63,6 @@
 
   .footer { 
     padding: 5px; 
-    position: fixed;
-    left: 0;
-    bottom: 0;
     width: 100%;
   }
 }

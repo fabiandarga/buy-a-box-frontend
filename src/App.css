@@ -1,7 +1,9 @@
-.for-desktop{  
-width: 100%;  
-height: 100vh;
-background-color: #F5F5F5
+.for-desktop{   
+  display: flex; 
+  flex-direction: column; 
+  width: 100%;  
+  min-height: 100vh;
+  background-color: #F5F5F5
 }
 
 .Dashboard {  
@@ -12,3 +14,6 @@ background-color: #F5F5F5
   background-color: #F5F5F5 ;
 }
 
+.content-app{ 
+  flex-grow: 1;
+}

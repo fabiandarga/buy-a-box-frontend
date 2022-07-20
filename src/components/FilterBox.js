@@ -46,7 +46,7 @@ function FilterBox(props) {
     <Card>
       <div className="filterBox">
         <div className="filterBoxHeader">
-          <h2>Filter</h2>
+          <h3>Filter</h3>
           <Button onClick={togglePopup} text="Open Filter" />
         </div>
         <Tags productOptions={selectedProducts} shopOptions={selectedShops} />
@@ -55,20 +55,19 @@ function FilterBox(props) {
             handleClose={togglePopup}
             content={
               <div>
-                <h2>Filter</h2>
-                <h3>Shops</h3>
+                <div className="filter-titel">Shops</div>
                 <DropDownSelect
                   options={shopFilter}
                   value={selectedShops}
                   onChange={onShopsChange}
                 />
-                <h3>product</h3>
+                <div className="filter-titel">product</div>
                 <DropDownSelect
                   options={productFilter}
                   value={selectedProducts}
                   onChange={onProductsChange}
                 />
-                <h2>Zeit-Achse</h2>
+                <h3>Zeit-Achse</h3>
                 <WojtekmajDaterangePicker from={from} to={to} setFrom={setFrom} setTo={setTo} />
                 <SchritteDropDown setFrom={setFrom} setTo={setTo} />
                 <div className="saveBtnFooter">

@@ -15,17 +15,21 @@
   right: 12px;
   top: 36px;
   margin-bottom: 36px; 
-  padding : 0 12px; 
-  height: 93vh;
+  padding : 20px; 
+  
 }
 
 .closeContent {
-  padding: 15px 0px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: baseline; 
   border-bottom: 2px solid #EEEEEE;
+} 
+
+h2{ 
+  margin-top: 0; 
+  margin-bottom: 10px;
 }
 
 .close{   
@@ -35,4 +39,12 @@
   background-color: white;
   color: #8E8E8E; 
   cursor: pointer;
- } 
+ }  
+
+
+ @media ( min-width: 800px ) {
+	.popupBox {
+   max-width: 500px;
+  }
+
+}
