@@ -1,8 +1,27 @@
+/* eslint-disable no-restricted-syntax */
 import React from 'react';
 import { CategoryScale } from 'chart.js';
 import Chart from 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
 import Card from './Card';
+
+const allColors = [
+  '#099',
+  '#340070',
+  '#4d6200',
+  '#f24d12',
+  '#218d3a',
+  '#874b98',
+  '#6a741a',
+  '#df3aa8',
+  '#693aa6',
+  '#b37038',
+];
+
+function getColorFromIndex(index) {
+  const colorIndex = index % allColors.length;
+  return allColors[colorIndex];
+}
 
 function PriceChart(props) {
   const { items } = props;
@@ -19,15 +38,15 @@ function PriceChart(props) {
     return acc;
   }, {});
 
-  const newDatasets = Object.entries(itemsSorted).map((set) => {
+  const newDatasets = Object.entries(itemsSorted).map((set, index) => {
     const data = set[1].sort((itemA, itemB) => new Date(itemA.date) - new Date(itemB.date));
-
+    const color = getColorFromIndex(index);
     return {
       label: set[0],
       data: data.map((item) => ({ x: item.date, y: item.price })),
-      backgroundColor: ['yellow'],
-      borderColor: ['red'],
-      borderWidth: 1,
+      borderWidth: 3,
+      backgroundColor: color,
+      borderColor: color,
     };
   });
 
