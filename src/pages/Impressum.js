@@ -9,19 +9,16 @@ function Impressum() {
       <div>Fabian Darga</div>
       <div>Am Langberg 54a</div>
       <div>21033 Hamburg</div>
-      <h5>Vertreten durch: </h5>
-      <div>Fabian Darga</div>
       <h5>Kontakt:</h5>
       <div>Telefon: 0176-41877728</div>
       <div>
         E-Mail: <a href="mailto:kontakt@fabiandarga.de">kontakt@fabiandarga.de</a>{' '}
       </div>
-      <h5>Umsatzsteuer-ID: </h5>
-      <div>Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz: Musterustid.</div>
-      <h5>Wirtschafts-ID: </h5>
-      <h5>Musterwirtschaftsid:</h5>
-      <h5>Aufsichtsbehörde:</h5>
-      Musteraufsicht Musterstadt
+      <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</h3>
+      <div>Fabian Darga</div>
+      <div>Am Langberg 54a</div>
+      <div>21033 Hamburg</div>
+
       <h5>Haftungsausschluss: </h5>
       <h5>Datenschutz</h5>
       <p>
