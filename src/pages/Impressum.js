@@ -13,7 +13,6 @@ function Impressum() {
       <div>Fabian Darga</div>
       <h5>Kontakt:</h5>
       <div>Telefon: 0176-41877728</div>
-      <div>Fax: 1234-56789</div>
       <div>
         E-Mail: <a href="mailto:kontakt@fabiandarga.de">kontakt@fabiandarga.de</a>{' '}
       </div>
