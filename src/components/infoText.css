@@ -9,10 +9,34 @@
   font-style: normal;
 } 
 
-.infoTextH2 {  
-font-weight: 700;
+.infoText h2 {  
+  font-size: 18px;
+  font-weight: 500;
 } 
 
 .infoTextP { 
 font-weight: 400;
+}
+
+.infoText .highlight {
+  color: #340070;
+  font-weight: bold;
+}
+
+.infoText h3 {
+  color: #3c3c3c;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 15px 0 5px;
+}
+.infoText h4 {
+  color: #3c3c3c;
+  margin: 10px 0 5px;
+}
+
+.infoText p {
+  margin: 5px 0;
+}
+.infoText p + p {
+  margin-top: 10px;
 }
