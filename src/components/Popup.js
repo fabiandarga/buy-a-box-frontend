@@ -8,7 +8,7 @@ function Popup(props) {
       <div className="popupBox">
         <div className="box">
           <div className="closeContent">
-            <h2>Title</h2>
+            <h2>Filter</h2>
             <button type="button" className="close" onClick={handleClose}>
               X
             </button>

@@ -21,7 +21,7 @@ function WojtekmajDaterangePicker(props) {
 
   return (
     <div>
-      <h3>Zeitrahmen</h3>
+      <div className="section-title">Zeitrahmen</div>
       <DateRangePicker onChange={onChangeDateRangePickerHandler} value={valueDate} />
     </div>
   );

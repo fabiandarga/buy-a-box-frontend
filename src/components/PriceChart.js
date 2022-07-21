@@ -4,6 +4,7 @@ import { CategoryScale } from 'chart.js';
 import Chart from 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
 import Card from './Card';
+import './priceChart.css';
 
 const allColors = [
   '#099',
@@ -52,7 +53,7 @@ function PriceChart(props) {
 
   return (
     <Card>
-      <div>
+      <div className="priceChart">
         <Line
           data={{
             datasets: newDatasets,
