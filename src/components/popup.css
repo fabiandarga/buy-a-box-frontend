@@ -7,7 +7,16 @@
   height: 100vh;
 }
 
-.popupBox {
+
+
+.popupBox { 
+  width: 300px;
+  max-height: 80vh;
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+
+
   margin: auto auto;
   position: fixed;
   background-color: #ffff;

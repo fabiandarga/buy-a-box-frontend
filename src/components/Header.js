@@ -1,10 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './header.css';
 
 function Header() {
   return (
     <div className="header">
-      <h1 className="websiteName">Buy a Box</h1>
+      <Link className="link-style" to="/">
+        <h1 className="websiteName">Buy a Box</h1>
+      </Link>
       <p className="websiteTitle">| MTG Display preisanalyse</p>
     </div>
   );

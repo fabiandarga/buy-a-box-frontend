@@ -5,7 +5,7 @@ import Tags from './Tags';
 import Popup from './Popup';
 import DropDownSelect from './DropDownSelect';
 import WojtekmajDaterangePicker from './WojtekmajDaterangePicker';
-import SchritteDropDown from './SchritteDropDown';
+import SchritteDropDown from './SchritteButtons';
 import './filterBox.css';
 
 /**
@@ -55,13 +55,13 @@ function FilterBox(props) {
             handleClose={togglePopup}
             content={
               <div>
-                <div className="filter-titel">Shops</div>
+                <div className="tagscategory">Shops</div>
                 <DropDownSelect
                   options={shopFilter}
                   value={selectedShops}
                   onChange={onShopsChange}
                 />
-                <div className="filter-titel">product</div>
+                <div className="tagscategory">product</div>
                 <DropDownSelect
                   options={productFilter}
                   value={selectedProducts}

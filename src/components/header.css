@@ -11,10 +11,15 @@
 .websiteName {   
 color: #FFFFFF ;
 font-size: 24px; 
-font-family: 'Lobster', cursive; 
-}   
+font-family: 'Lobster', cursive;  
+text-decoration: none; 
+}    
 
-.websiteTitle {   
+.link-style {  
+  text-decoration: none; 
+}
+
+.websiteTitle {     
   font-family: 'Raleway';
   color: #FFFFFF ; 
   font-weight: 400;
