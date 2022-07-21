@@ -13,6 +13,11 @@ function Dashboard() {
   const [selectedSets, setSelectedSets] = useState(['AFR']);
   const [filterShopsOptions, setFilterShopsOptions] = useState([]);
   const [selectedShops, setSelectedShops] = useState(['miracle-games']);
+  // new code
+  const [filterLanguageOptions, setFilterLanguageOptions] = useState([]);
+  const [selectedLanguage, setSelectedLanguage] = useState(['deu']);
+  // new code
+
   const [from, setFrom] = useState(new Date(Date.now() - 2628000000).toISOString().slice(0, 10));
   const [to, setTo] = useState(new Date().toISOString().slice(0, 10));
 
@@ -61,6 +66,18 @@ function Dashboard() {
       return array;
     }, []);
 
+    // new code
+    const itemLanguageUnique = data.reduce((array, item) => {
+      const { lang } = item;
+      if (!array.includes(lang)) {
+        array.push(lang);
+      }
+      return array;
+    }, []);
+
+    setFilterLanguageOptions(itemLanguageUnique);
+    // new code
+
     setFilterShopsOptions(itemShopsUnique);
     setFilterSetOptions(itemCodesUnique);
   };
@@ -84,7 +101,10 @@ function Dashboard() {
     }
     if (selectedShops.length > 0 && !selectedShops.includes(item.shop)) {
       return false;
-    }
+    } // new code
+    if (selectedLanguage.length > 0 && !selectedLanguage.includes(item.lang)) {
+      return false;
+    } // new code
     return true;
   });
 
@@ -108,6 +128,17 @@ function Dashboard() {
           onProductsChange={(selected) => {
             setSelectedSets(selected.map((item) => item.value));
           }}
+          // new code
+          selectedLanguage={selectedLanguage.map((shop) => ({
+            value: shop,
+            label: shop,
+          }))}
+          onLanguageChange={(selected) => {
+            setSelectedLanguage(selected.map((item) => item.value));
+          }}
+          languageOptions={filterLanguageOptions}
+          // new code
+
           items={filterItems}
           setOptions={filterSetOptions}
           from={from}
