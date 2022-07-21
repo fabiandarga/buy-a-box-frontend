@@ -25,9 +25,9 @@ function SchritteButtons(props) {
     <div>
       <div className="tagscategory">Schritte</div>
       <div className="schritteButtonsContent">
-        {SchritteOption.map((schritte, index) => (
+        {SchritteOption.map((schritte) => (
           <Button
-            key={index}
+            key={schritte.value}
             className="button-outline"
             onClick={() => {
               onChangeDateHandler(schritte.value);
