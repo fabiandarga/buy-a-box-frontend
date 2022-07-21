@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Card from '../components/Card';
 import './impressum.css';
 
@@ -8,41 +9,47 @@ function Impressum() {
       <Card>
         <div className="impressum">
           <h1>Impressum</h1>
-          <hr />
+          <h3>Angaben gemäß § 5 TMG</h3>
+          <div>Fabian Darga</div>
+          <div>Am Langberg 54a</div>
+          <div>21033 Hamburg</div>
+          <h5>Kontakt:</h5>
+          <div>Telefon: 0176-41877728</div>
+          <div>
+            E-Mail: <a href="mailto:kontakt@fabiandarga.de">kontakt@fabiandarga.de</a>{' '}
+          </div>
+          <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</h3>
+          <div>Fabian Darga</div>
+          <div>Am Langberg 54a</div>
+          <div>21033 Hamburg</div>
+
+          <h5>Haftungsausschluss: </h5>
+          <h5>Datenschutz</h5>
           <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-            amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-            tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
-            et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-            sanctus est Lorem ipsum dolor sit amet.
-            <br />
-            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
-            vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio
-            dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla
-            facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-            nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-            <br />
-            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
-            nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in
-            vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at
-            vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril
-            delenit augue duis dolore te feugait nulla facilisi.
-            <br />
-            Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod
-            mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing
-            elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-            volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-            lobortis nisl ut aliquip ex ea commodo consequat.
-            <br />
-            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
-            vel illum dolore eu feugiat nulla facilisis.
+            Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten
+            möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name,
+            Anschrift oder eMail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf
+            freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an
+            Dritte weitergegeben.
           </p>
+          <p>
+            Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation
+            per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem
+            Zugriff durch Dritte ist nicht möglich.
+          </p>
+          <p>
+            Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch
+            Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und
+            Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der
+            Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten
+            Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.
+          </p>
+          <div>
+            Impressum vom <a href="https://www.impressum-generator.de">Impressum Generator</a> der{' '}
+            <a href="https://www.kanzlei-hasselbach.de/standorte/frankfurt/" rel="nofollow">
+              Kanzlei Hasselbach, Frankfurt
+            </a>
+          </div>
         </div>
       </Card>
     </div>
