@@ -55,13 +55,13 @@ function FilterBox(props) {
             handleClose={togglePopup}
             content={
               <div>
-                <div className="tagscategory">Shops</div>
+                <div className="section-title">Shops</div>
                 <DropDownSelect
                   options={shopFilter}
                   value={selectedShops}
                   onChange={onShopsChange}
                 />
-                <div className="tagscategory">product</div>
+                <div className="section-title">product</div>
                 <DropDownSelect
                   options={productFilter}
                   value={selectedProducts}

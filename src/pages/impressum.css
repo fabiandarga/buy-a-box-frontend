@@ -1,3 +1,8 @@
+
 .impressum {  
   padding: 20px 20px;
+}
+
+.impressum hr {
+    border-color: #cbc9c9;
 }
