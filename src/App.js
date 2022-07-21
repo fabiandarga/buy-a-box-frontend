@@ -16,7 +16,7 @@ function App() {
             path="/"
             element={
               <div>
-                <div className="Dashboard">
+                <div className="page">
                   <Dashboard />
                 </div>
               </div>
