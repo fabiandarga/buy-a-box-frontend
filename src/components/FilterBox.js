@@ -30,19 +30,14 @@ function FilterBox(props) {
     setTo,
     from,
     to,
-    // new code
     selectedLanguage,
     onLanguageChange,
     languageOptions,
-    // new code
   } = props;
 
   const productFilter = setOptions.map((code) => ({ value: code, label: code }));
-
   const shopFilter = shopOptions.map((shop) => ({ value: shop, label: shop }));
-  // new code
   const languageFilter = languageOptions.map((lang) => ({ value: lang, label: lang }));
-  // new code
 
   const [showPopup, setShowPopup] = useState(false);
 

@@ -7,6 +7,18 @@ import './dashboard.css';
 // http://localhost:4000/scraper/all?from=2022-07-14&to=2022-07-14
 const SCRAPER_PATH = 'https://buy-a-box-backend.herokuapp.com/scraper/all';
 
+function pickAtribute(array, key) {
+  const itemUnique = array.reduce((arrays, item) => {
+    const value = item[key];
+    if (!arrays.includes(value)) {
+      arrays.push(value);
+    }
+    return arrays;
+  }, []);
+
+  return itemUnique;
+}
+
 function Dashboard() {
   const [allItems, setAllItems] = useState([]);
   const [filterSetOptions, setFilterSetOptions] = useState([]);
@@ -50,36 +62,9 @@ function Dashboard() {
    */
 
   const calculateOptions = (data) => {
-    const itemCodesUnique = data.reduce((array, item) => {
-      const { code } = item;
-      if (!array.includes(code)) {
-        array.push(code);
-      }
-      return array;
-    }, []);
-
-    const itemShopsUnique = data.reduce((array, item) => {
-      const { shop } = item;
-      if (!array.includes(shop)) {
-        array.push(shop);
-      }
-      return array;
-    }, []);
-
-    // new code
-    const itemLanguageUnique = data.reduce((array, item) => {
-      const { lang } = item;
-      if (!array.includes(lang)) {
-        array.push(lang);
-      }
-      return array;
-    }, []);
-
-    setFilterLanguageOptions(itemLanguageUnique);
-    // new code
-
-    setFilterShopsOptions(itemShopsUnique);
-    setFilterSetOptions(itemCodesUnique);
+    setFilterLanguageOptions(pickAtribute(data, 'lang'));
+    setFilterShopsOptions(pickAtribute(data, 'shop'));
+    setFilterSetOptions(pickAtribute(data, 'code'));
   };
 
   const filterSaveHandler = () => {
@@ -101,10 +86,10 @@ function Dashboard() {
     }
     if (selectedShops.length > 0 && !selectedShops.includes(item.shop)) {
       return false;
-    } // new code
+    }
     if (selectedLanguage.length > 0 && !selectedLanguage.includes(item.lang)) {
       return false;
-    } // new code
+    }
     return true;
   });
 
