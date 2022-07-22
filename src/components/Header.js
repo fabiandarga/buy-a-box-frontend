@@ -5,10 +5,12 @@ import './header.css';
 function Header() {
   return (
     <div className="header">
-      <Link className="link-style" to="/">
-        <h1 className="websiteName">Buy a Box</h1>
-      </Link>
-      <p className="websiteTitle">| MTG Display Preisanalyse</p>
+      <h1 className="websiteName">
+        <Link className="link-style" to="/">
+          <span className="websiteName">Buy a Box</span>
+        </Link>
+        <span className="websiteTitle">| MTG Display Preisanalyse</span>
+      </h1>
     </div>
   );
 }
