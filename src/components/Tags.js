@@ -12,16 +12,18 @@ function Tags(props) {
   return (
     <div>
       <div>
-        <div className="tagscategory"> Shops</div>
+        <div className="section-title"> Shops</div>
         <div className="allTags">
+          {shopFilter.length === 0 && <Tag>Alle Shops</Tag>}
           {shopFilter.map((filter) => (
             <Tag key={filter}>{filter}</Tag>
           ))}
         </div>
       </div>
       <div>
-        <div className="tagscategory">Products</div>
+        <div className="section-title">Products</div>
         <div className="allTags">
+          {productFilter.length === 0 && <Tag>Alle Produkte</Tag>}
           {productFilter.map((filter) => (
             <Tag key={filter}>{filter}</Tag>
           ))}

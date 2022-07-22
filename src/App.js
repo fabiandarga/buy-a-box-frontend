@@ -10,19 +10,21 @@ function App() {
   return (
     <div className="for-desktop">
       <Header />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              <div className="Dashboard">
-                <Dashboard />
+      <div className="content-app">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div>
+                <div className="page">
+                  <Dashboard />
+                </div>
               </div>
-            </div>
-          }
-        />
-        <Route path="/Impressum" element={<Impressum />} />
-      </Routes>
+            }
+          />
+          <Route path="/Impressum" element={<Impressum />} />
+        </Routes>
+      </div>
       <Footer />
     </div>
   );

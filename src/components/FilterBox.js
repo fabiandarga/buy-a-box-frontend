@@ -5,7 +5,7 @@ import Tags from './Tags';
 import Popup from './Popup';
 import DropDownSelect from './DropDownSelect';
 import WojtekmajDaterangePicker from './WojtekmajDaterangePicker';
-import SchritteDropDown from './SchritteDropDown';
+import SchritteDropDown from './SchritteButtons';
 import './filterBox.css';
 
 /**
@@ -49,7 +49,7 @@ function FilterBox(props) {
     <Card>
       <div className="filterBox">
         <div className="filterBoxHeader">
-          <h2>Filter</h2>
+          <h3>Filter</h3>
           <Button onClick={togglePopup} text="Open Filter" />
         </div>
         <Tags
@@ -62,14 +62,13 @@ function FilterBox(props) {
             handleClose={togglePopup}
             content={
               <div>
-                <h2>Filter</h2>
-                <h3>Shops</h3>
+                <div className="section-title">Shops</div>
                 <DropDownSelect
                   options={shopFilter}
                   value={selectedShops}
                   onChange={onShopsChange}
                 />
-                <h3>product</h3>
+                <div className="section-title">product</div>
                 <DropDownSelect
                   options={productFilter}
                   value={selectedProducts}
