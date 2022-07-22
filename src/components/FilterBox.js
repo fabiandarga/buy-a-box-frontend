@@ -33,11 +33,15 @@ function FilterBox(props) {
     selectedLanguage,
     onLanguageChange,
     languageOptions,
+    selectedType,
+    onTypeChange,
+    typeOptions,
   } = props;
 
   const productFilter = setOptions.map((code) => ({ value: code, label: code }));
   const shopFilter = shopOptions.map((shop) => ({ value: shop, label: shop }));
   const languageFilter = languageOptions.map((lang) => ({ value: lang, label: lang }));
+  const typeFilter = typeOptions.map((lang) => ({ value: lang, label: lang }));
 
   const [showPopup, setShowPopup] = useState(false);
 
@@ -56,6 +60,7 @@ function FilterBox(props) {
           productOptions={selectedProducts}
           shopOptions={selectedShops}
           langOptions={selectedLanguage}
+          typeOptions={selectedType}
         />
         {showPopup && (
           <Popup
@@ -80,6 +85,8 @@ function FilterBox(props) {
                   value={selectedLanguage}
                   onChange={onLanguageChange}
                 />
+                <div className="section-title">Type</div>
+                <DropDownSelect options={typeFilter} value={selectedType} onChange={onTypeChange} />
                 <h2>Zeit-Achse</h2>
                 <WojtekmajDaterangePicker from={from} to={to} setFrom={setFrom} setTo={setTo} />
                 <SchritteDropDown setFrom={setFrom} setTo={setTo} />

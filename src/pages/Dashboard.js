@@ -11,11 +11,13 @@ const SCRAPER_PATH = 'https://buy-a-box-backend.herokuapp.com/scraper/all';
 function Dashboard() {
   const [allItems, setAllItems] = useState([]);
   const [filterSetOptions, setFilterSetOptions] = useState([]);
-  const [selectedProducts, setSelectedProducts] = useState(['AFR']);
+  const [selectedProducts, setSelectedProducts] = useState(['2X2']);
   const [filterShopsOptions, setFilterShopsOptions] = useState([]);
   const [selectedShops, setSelectedShops] = useState(['miracle-games']);
   const [filterLanguageOptions, setFilterLanguageOptions] = useState([]);
-  const [selectedLanguages, setSelectedLanguage] = useState(['deu']);
+  const [selectedLanguages, setSelectedLanguage] = useState(['deu', 'eng']);
+  const [filterTypeOptions, setFilterTypeOptions] = useState([]);
+  const [selectedType, setSelectedType] = useState(['draft', 'set', 'collector']);
   const [from, setFrom] = useState(new Date(Date.now() - 2628000000).toISOString().slice(0, 10));
   const [to, setTo] = useState(new Date().toISOString().slice(0, 10));
 
@@ -26,6 +28,7 @@ function Dashboard() {
     setFilterLanguageOptions(pickAttribute(data, 'lang'));
     setFilterShopsOptions(pickAttribute(data, 'shop'));
     setFilterSetOptions(pickAttribute(data, 'code'));
+    setFilterTypeOptions(pickAttribute(data, 'type'));
   };
 
   // eslint-disable-next-line no-shadow
@@ -67,7 +70,9 @@ function Dashboard() {
     setSelectedLanguage(optionsToStrings(selected));
   };
 
-  const selectedType = ['draft'];
+  const handleTypeSelected = (selected) => {
+    setSelectedType(optionsToStrings(selected));
+  };
 
   const filterItems = allItems.filter((item) => {
     if (selectedProducts.length > 0 && !selectedProducts.includes(item.code)) {
@@ -98,6 +103,9 @@ function Dashboard() {
           selectedLanguage={stringsToOptions(selectedLanguages)}
           onLanguageChange={handleLanguagesSelected}
           languageOptions={filterLanguageOptions}
+          selectedType={stringsToOptions(selectedType)}
+          onTypeChange={handleTypeSelected}
+          typeOptions={filterTypeOptions}
           items={filterItems}
           setOptions={filterSetOptions}
           from={from}
