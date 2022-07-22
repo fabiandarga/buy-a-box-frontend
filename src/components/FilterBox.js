@@ -7,7 +7,6 @@ import DropDownSelect from './DropDownSelect';
 import WojtekmajDaterangePicker from './WojtekmajDaterangePicker';
 import SchritteDropDown from './SchritteButtons';
 import { stringsToOptions } from '../utils/array-utils';
-
 import './filterBox.css';
 
 /**
@@ -40,10 +39,10 @@ function FilterBox(props) {
     typeOptions,
   } = props;
 
-  const productFilter = setOptions.map(stringsToOptions);
-  const shopFilter = shopOptions.map(stringsToOptions);
-  const languageFilter = languageOptions.map(stringsToOptions);
-  const typeFilter = typeOptions.map(stringsToOptions);
+  const productFilter = stringsToOptions(setOptions);
+  const shopFilter = stringsToOptions(shopOptions);
+  const languageFilter = stringsToOptions(languageOptions);
+  const typeFilter = stringsToOptions(typeOptions);
 
   const [showPopup, setShowPopup] = useState(false);
 
