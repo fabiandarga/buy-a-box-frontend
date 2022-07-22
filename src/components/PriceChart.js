@@ -24,13 +24,19 @@ function getColorFromIndex(index) {
   return allColors[colorIndex];
 }
 
+function getLabelForDataSet(key) {
+  const parts = key.split('/');
+  return `${parts[0]} ${parts[1]} [${parts[2].substr(0, 2)}] (${parts[3]})`;
+}
+
 function PriceChart(props) {
   const { items } = props;
   Chart.register(CategoryScale);
 
   // props.items = Array aus { date, lang, code, name, type, price, shop}
   const itemsSorted = items.reduce((acc, item) => {
-    const key = `${item.code} ${item.lang.toUpperCase()} (${item.shop})`;
+    // const key = `${item.code} ${item.lang.toUpperCase()} (${item.shop})`;
+    const key = `${item.code}/${item.type}/${item.lang.toLowerCase()}/${item.shop}`;
     if (acc[key]) {
       acc[key].push(item);
     } else {
@@ -43,7 +49,7 @@ function PriceChart(props) {
     const data = set[1].sort((itemA, itemB) => new Date(itemA.date) - new Date(itemB.date));
     const color = getColorFromIndex(index);
     return {
-      label: set[0],
+      label: getLabelForDataSet(set[0]),
       data: data.map((item) => ({ x: item.date, y: item.price })),
       borderWidth: 3,
       backgroundColor: color,
@@ -67,7 +73,7 @@ function PriceChart(props) {
                 position: 'bottom',
                 align: 'start',
                 labels: {
-                  boxWidth: 20,
+                  boxWidth: 7,
                 },
               },
             },
