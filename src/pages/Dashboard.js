@@ -13,7 +13,11 @@ function Dashboard() {
   const [filterSetOptions, setFilterSetOptions] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState(['2X2']);
   const [filterShopsOptions, setFilterShopsOptions] = useState([]);
-  const [selectedShops, setSelectedShops] = useState(['miracle-games']);
+  const [selectedShops, setSelectedShops] = useState([
+    'miracle-games',
+    'trader-online',
+    'mtg-discount',
+  ]);
   const [filterLanguageOptions, setFilterLanguageOptions] = useState([]);
   const [selectedLanguages, setSelectedLanguage] = useState(['deu', 'eng']);
   const [filterTypeOptions, setFilterTypeOptions] = useState([]);

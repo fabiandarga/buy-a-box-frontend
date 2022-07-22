@@ -6,6 +6,8 @@ import Popup from './Popup';
 import DropDownSelect from './DropDownSelect';
 import WojtekmajDaterangePicker from './WojtekmajDaterangePicker';
 import SchritteDropDown from './SchritteButtons';
+import { stringsToOptions } from '../utils/array-utils';
+
 import './filterBox.css';
 
 /**
@@ -38,10 +40,10 @@ function FilterBox(props) {
     typeOptions,
   } = props;
 
-  const productFilter = setOptions.map((code) => ({ value: code, label: code }));
-  const shopFilter = shopOptions.map((shop) => ({ value: shop, label: shop }));
-  const languageFilter = languageOptions.map((lang) => ({ value: lang, label: lang }));
-  const typeFilter = typeOptions.map((lang) => ({ value: lang, label: lang }));
+  const productFilter = setOptions.map(stringsToOptions);
+  const shopFilter = shopOptions.map(stringsToOptions);
+  const languageFilter = languageOptions.map(stringsToOptions);
+  const typeFilter = typeOptions.map(stringsToOptions);
 
   const [showPopup, setShowPopup] = useState(false);
 
