@@ -2,41 +2,31 @@ import React, { useState, useEffect } from 'react';
 import InfoText from '../components/InfoText';
 import FilterBox from '../components/FilterBox';
 import PriceChart from '../components/PriceChart';
+import { optionsToStrings, stringsToOptions, pickAttribute } from '../utils/array-utils';
 import './dashboard.css';
 
 // http://localhost:4000/scraper/all?from=2022-07-14&to=2022-07-14
 const SCRAPER_PATH = 'https://buy-a-box-backend.herokuapp.com/scraper/all';
 
-function pickAtribute(array, key) {
-  const itemUnique = array.reduce((arrays, item) => {
-    const value = item[key];
-    if (!arrays.includes(value)) {
-      arrays.push(value);
-    }
-    return arrays;
-  }, []);
-
-  return itemUnique;
-}
-
 function Dashboard() {
   const [allItems, setAllItems] = useState([]);
   const [filterSetOptions, setFilterSetOptions] = useState([]);
-  const [selectedSets, setSelectedSets] = useState(['AFR']);
+  const [selectedProducts, setSelectedProducts] = useState(['AFR']);
   const [filterShopsOptions, setFilterShopsOptions] = useState([]);
   const [selectedShops, setSelectedShops] = useState(['miracle-games']);
-  // new code
   const [filterLanguageOptions, setFilterLanguageOptions] = useState([]);
-  const [selectedLanguage, setSelectedLanguage] = useState(['deu']);
-  // new code
-
+  const [selectedLanguages, setSelectedLanguage] = useState(['deu']);
   const [from, setFrom] = useState(new Date(Date.now() - 2628000000).toISOString().slice(0, 10));
   const [to, setTo] = useState(new Date().toISOString().slice(0, 10));
 
-  useEffect(() => {
-    // eslint-disable-next-line no-use-before-define
-    fetchData();
-  }, []); // Dependancy Array
+  /**
+   * Takes the server data and calculates the filter option for this set of data
+   */
+  const calculateOptions = (data) => {
+    setFilterLanguageOptions(pickAttribute(data, 'lang'));
+    setFilterShopsOptions(pickAttribute(data, 'shop'));
+    setFilterSetOptions(pickAttribute(data, 'code'));
+  };
 
   // eslint-disable-next-line no-shadow
   const fetchData = async (from, to) => {
@@ -50,35 +40,37 @@ function Dashboard() {
     await fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        // eslint-disable-next-line no-use-before-define
         calculateOptions(data);
         setAllItems(data);
       })
       .catch((err) => err);
   };
 
-  /**
-   * @param {Array} data
-   */
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  const calculateOptions = (data) => {
-    setFilterLanguageOptions(pickAtribute(data, 'lang'));
-    setFilterShopsOptions(pickAtribute(data, 'shop'));
-    setFilterSetOptions(pickAtribute(data, 'code'));
+  const handleFilterSaved = () => {
+    // reload data with set time range
+    fetchData(from, to);
   };
 
-  const filterSaveHandler = () => {
-    // es wurde der save button geklickt
-    // from und to
-    // request zum server mit from und to
-    //    fetch data
-    fetchData(from, to);
+  const handleShopsSelected = (selected) => {
+    setSelectedShops(optionsToStrings(selected));
+  };
+
+  const handleProductsSelected = (selected) => {
+    setSelectedProducts(optionsToStrings(selected));
+  };
+
+  const handleLanguagesSelected = (selected) => {
+    setSelectedLanguage(optionsToStrings(selected));
   };
 
   const selectedType = ['draft'];
 
   const filterItems = allItems.filter((item) => {
-    if (selectedSets.length > 0 && !selectedSets.includes(item.code)) {
+    if (selectedProducts.length > 0 && !selectedProducts.includes(item.code)) {
       return false;
     }
     if (selectedType.length > 0 && !selectedType.includes(item.type)) {
@@ -87,7 +79,7 @@ function Dashboard() {
     if (selectedShops.length > 0 && !selectedShops.includes(item.shop)) {
       return false;
     }
-    if (selectedLanguage.length > 0 && !selectedLanguage.includes(item.lang)) {
+    if (selectedLanguages.length > 0 && !selectedLanguages.includes(item.lang)) {
       return false;
     }
     return true;
@@ -98,39 +90,21 @@ function Dashboard() {
       <PriceChart items={filterItems} />
       <div className="FilterBox-InfoText">
         <FilterBox
-          selectedShops={selectedShops.map((shop) => ({
-            value: shop,
-            label: shop,
-          }))}
-          onShopsChange={(selected) => {
-            setSelectedShops(selected.map((item) => item.value));
-          }}
+          selectedShops={stringsToOptions(selectedShops)}
+          onShopsChange={handleShopsSelected}
           shopOptions={filterShopsOptions}
-          selectedProducts={selectedSets.map((code) => ({
-            value: code,
-            label: code,
-          }))}
-          onProductsChange={(selected) => {
-            setSelectedSets(selected.map((item) => item.value));
-          }}
-          // new code
-          selectedLanguage={selectedLanguage.map((shop) => ({
-            value: shop,
-            label: shop,
-          }))}
-          onLanguageChange={(selected) => {
-            setSelectedLanguage(selected.map((item) => item.value));
-          }}
+          selectedProducts={stringsToOptions(selectedProducts)}
+          onProductsChange={handleProductsSelected}
+          selectedLanguage={stringsToOptions(selectedLanguages)}
+          onLanguageChange={handleLanguagesSelected}
           languageOptions={filterLanguageOptions}
-          // new code
-
           items={filterItems}
           setOptions={filterSetOptions}
           from={from}
           to={to}
           setFrom={setFrom}
           setTo={setTo}
-          onSave={filterSaveHandler}
+          onSave={handleFilterSaved}
         />
         <InfoText />
       </div>
