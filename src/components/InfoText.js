@@ -10,7 +10,7 @@ function InfoText() {
         <h3>Die Mission</h3>
         <p className="infoTextP">
           <span className="highlight">Buy a Box</span> ist ein tool zur Analyse der Preisentwicklung
-          bei Magic the gathering the Gathering Booster Displays.
+          bei Magic the Gathering Booster Displays.
         </p>
         <p className="infoTextP">
           Unsere Mission war und ist es eine einfache Möglich für alle Mtg Fans zu erschaffen, sich

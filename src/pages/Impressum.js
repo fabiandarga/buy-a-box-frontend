@@ -9,7 +9,7 @@ function Impressum() {
     <div className="page">
       <Card>
         <div className="impressum">
-          <h1>Impressum</h1>
+          <h2>Impressum</h2>
           <h3>Angaben gemäß § 5 TMG</h3>
           <div>Fabian Darga</div>
           <div>Am Langberg 54a</div>

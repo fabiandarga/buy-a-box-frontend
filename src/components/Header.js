@@ -8,7 +8,7 @@ function Header() {
       <Link className="link-style" to="/">
         <h1 className="websiteName">Buy a Box</h1>
       </Link>
-      <p className="websiteTitle">| MTG Display preisanalyse</p>
+      <p className="websiteTitle">| MTG Display Preisanalyse</p>
     </div>
   );
 }
