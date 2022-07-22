@@ -30,11 +30,14 @@ function FilterBox(props) {
     setTo,
     from,
     to,
+    selectedLanguage,
+    onLanguageChange,
+    languageOptions,
   } = props;
 
   const productFilter = setOptions.map((code) => ({ value: code, label: code }));
-
   const shopFilter = shopOptions.map((shop) => ({ value: shop, label: shop }));
+  const languageFilter = languageOptions.map((lang) => ({ value: lang, label: lang }));
 
   const [showPopup, setShowPopup] = useState(false);
 
@@ -49,7 +52,11 @@ function FilterBox(props) {
           <h3>Filter</h3>
           <Button onClick={togglePopup} text="Open Filter" />
         </div>
-        <Tags productOptions={selectedProducts} shopOptions={selectedShops} />
+        <Tags
+          productOptions={selectedProducts}
+          shopOptions={selectedShops}
+          langOptions={selectedLanguage}
+        />
         {showPopup && (
           <Popup
             handleClose={togglePopup}
@@ -67,7 +74,13 @@ function FilterBox(props) {
                   value={selectedProducts}
                   onChange={onProductsChange}
                 />
-                <h3>Zeit-Achse</h3>
+                <div className="section-title">Language</div>
+                <DropDownSelect
+                  options={languageFilter}
+                  value={selectedLanguage}
+                  onChange={onLanguageChange}
+                />
+                <h2>Zeit-Achse</h2>
                 <WojtekmajDaterangePicker from={from} to={to} setFrom={setFrom} setTo={setTo} />
                 <SchritteDropDown setFrom={setFrom} setTo={setTo} />
                 <div className="saveBtnFooter">
