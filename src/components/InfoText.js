@@ -43,6 +43,28 @@ function InfoText() {
         <p className="infoTextP">
           Muhanad ist zuständig für die Entwicklung der Webseite, den Server und die Datenbank.
         </p>
+        <h3>Disclaimer</h3>
+        <p className="infoTextP">
+          Wir übernehmen keine Garantie für die Richtigkeit der hier angezeigten Daten. Die
+          Informationen werden nur einmal pro Tag gesammelt. Änderungen die nach dieser Zeit
+          erscheinen werden erst am nächsten Tag erfasst und dann in unseren Daten aufgenommen.
+          Zudem können auch Software-Fehler dafür sorgen, dass Preise falsch oder gar nicht erfasst
+          oder angezeigt werden.
+        </p>
+        <p className="infoTextP">
+          Die ersten Datensätze stammen vom 11. Juli 2022. Frühere Informationen können wir leider
+          nicht anzeigen.
+        </p>
+        <p className="infoTextP">
+          Wir haben leider nicht alle Daten von allen Magic Online-Shops, die es da draußen gibt.
+          Die Shops, die wir hier anzeigen sind nicht unsere Favoriten oder unsere Empfehlung für
+          einen Kauf. Es ist etwas aufwändig neue shops mit in die Daten auszunehmen, sobald wir die
+          Zeit haben, werden wir weitere Shops hinzufügen.{' '}
+          <span className="highlight">
+            Möchtest du deinen Shop hier auf der Seite wiederfinden oder sogar Werbung bei uns
+            einblenden, dann melde dich gerne bei uns.
+          </span>
+        </p>
       </div>
     </Card>
   );
