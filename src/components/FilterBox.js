@@ -74,7 +74,7 @@ function FilterBox(props) {
                   value={selectedProducts}
                   onChange={onProductsChange}
                 />
-                <h3>Language</h3>
+                <div className="section-title">Language</div>
                 <DropDownSelect
                   options={languageFilter}
                   value={selectedLanguage}

@@ -28,7 +28,7 @@ function Tags(props) {
             <Tag key={filter}>{filter}</Tag>
           ))}
         </div>
-        <div className="tagscategory">Language</div>
+        <div className="section-title">Language</div>
         <div className="allTags">
           {languageFilter.length === 0 && <Tag>Alle Sprachen</Tag>}
           {languageFilter.map((filter) => (
