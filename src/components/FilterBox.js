@@ -37,9 +37,13 @@ function FilterBox(props) {
     selectedType,
     onTypeChange,
     typeOptions,
+    getProductTitle, // new code
   } = props;
 
-  const productFilter = stringsToOptions(setOptions);
+  const productFilter = stringsToOptions(setOptions).map((item) => ({
+    label: getProductTitle(item.value),
+    value: item.value,
+  }));
   const shopFilter = stringsToOptions(shopOptions);
   const languageFilter = stringsToOptions(languageOptions);
   const typeFilter = stringsToOptions(typeOptions);

@@ -6,7 +6,8 @@ import { optionsToStrings, stringsToOptions, pickAttribute } from '../utils/arra
 import './dashboard.css';
 
 // http://localhost:4000/scraper/all?from=2022-07-14&to=2022-07-14
-const SCRAPER_PATH = 'https://buy-a-box-backend.herokuapp.com/scraper/all';
+const SCRAPER_PATH = 'https://buy-a-box-backend.herokuapp.com/data/';
+const SETS_PATH = 'https://buy-a-box-backend.herokuapp.com/sets/';
 
 function Dashboard() {
   const [allItems, setAllItems] = useState([]);
@@ -33,6 +34,33 @@ function Dashboard() {
     setFilterShopsOptions(pickAttribute(data, 'shop'));
     setFilterSetOptions(pickAttribute(data, 'code'));
     setFilterTypeOptions(pickAttribute(data, 'type'));
+  };
+
+  // new code
+
+  const [sets, setSets] = useState([]);
+
+  const fatchSets = async () => {
+    await fetch(SETS_PATH)
+      .then((response) => response.json())
+      .then((data) => {
+        setSets(data);
+      })
+      .catch((err) => console.log('setsData err', err));
+  };
+
+  useEffect(() => {
+    fatchSets();
+  }, []); // Dependancy Array
+
+  // eslint-disable-next-line consistent-return
+  const getProductTitle = (code) => {
+    // eslint-disable-next-line no-shadow
+    const set = sets.find((set) => set.code === code);
+    if (set) {
+      return `${set.code} / ${set.name} / ${set.date}`;
+    }
+    return code;
   };
 
   // eslint-disable-next-line no-shadow
@@ -99,6 +127,9 @@ function Dashboard() {
       <PriceChart items={filterItems} />
       <div className="FilterBox-InfoText">
         <FilterBox
+          // new code
+          getProductTitle={getProductTitle}
+          // new code
           selectedShops={stringsToOptions(selectedShops)}
           onShopsChange={handleShopsSelected}
           shopOptions={filterShopsOptions}
