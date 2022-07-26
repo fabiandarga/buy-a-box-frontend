@@ -7,7 +7,7 @@ import './dashboard.css';
 
 // http://localhost:4000/scraper/all?from=2022-07-14&to=2022-07-14
 const SCRAPER_PATH = 'https://buy-a-box-backend.herokuapp.com/data/';
-const SETS_PATH = 'https://buy-a-box-backend.herokuapp.com/data/sets';
+const SETS_PATH = 'https://buy-a-box-backend.herokuapp.com/sets/';
 
 function Dashboard() {
   const [allItems, setAllItems] = useState([]);
