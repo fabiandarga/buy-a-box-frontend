@@ -41,8 +41,6 @@ function Dashboard() {
   const [sets, setSets] = useState([]);
 
   const fatchSets = async () => {
-    /* 'http://localhost:4000/data/sets' */
-
     await fetch(SETS_PATH)
       .then((response) => response.json())
       .then((data) => {
@@ -62,8 +60,8 @@ function Dashboard() {
     if (set) {
       return `${set.code} / ${set.name} / ${set.date}`;
     }
+    return code;
   };
-  // new code
 
   // eslint-disable-next-line no-shadow
   const fetchData = async (from, to) => {

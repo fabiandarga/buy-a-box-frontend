@@ -42,7 +42,6 @@ function FilterBox(props) {
 
   const productFilter = stringsToOptions(setOptions).map((item) => ({
     label: getProductTitle(item.value),
-    // label: item.label,
     value: item.value,
   }));
   const shopFilter = stringsToOptions(shopOptions);
