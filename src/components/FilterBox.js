@@ -54,6 +54,9 @@ function FilterBox(props) {
     setShowPopup(!showPopup);
   };
 
+  // eslint-disable-next-line no-console
+  console.log('selectedProducts', selectedProducts);
+
   return (
     <Card>
       <div className="filterBox">

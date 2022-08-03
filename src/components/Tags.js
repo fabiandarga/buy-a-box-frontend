@@ -26,7 +26,7 @@ function Tags(props) {
           {productFilter.length === 0 && <Tag>Alle Produkte</Tag>}
           {productFilter.map((filter) => (
             <Tag key={filter}>
-              <i className={`ss ss-${filter}`} /> {filter}
+              <i className={`ss ss-${filter.toLowerCase()}`} /> {filter}
             </Tag>
           ))}
         </div>
