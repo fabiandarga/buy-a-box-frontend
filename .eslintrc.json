@@ -32,7 +32,7 @@
             "node": {
               "extensions": [".js", ".jsx", ".ts", ".tsx"]
             }
-          }
+          }  
     }
         
 }
