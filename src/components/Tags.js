@@ -9,7 +9,6 @@ function Tags(props) {
   const shopFilter = shopOptions.map((item) => item.value);
   const languageFilter = langOptions.map((item) => item.value);
   const typeFilter = typeOptions.map((item) => item.value);
-
   return (
     <div>
       <div>
@@ -26,7 +25,9 @@ function Tags(props) {
         <div className="allTags">
           {productFilter.length === 0 && <Tag>Alle Produkte</Tag>}
           {productFilter.map((filter) => (
-            <Tag key={filter}>{filter}</Tag>
+            <Tag key={filter}>
+              <i className={`ss ss-${filter}`} /> {filter}
+            </Tag>
           ))}
         </div>
         <div className="section-title">Language</div>
