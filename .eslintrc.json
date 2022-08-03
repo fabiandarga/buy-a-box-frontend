@@ -23,5 +23,16 @@
         "prettier/prettier": "error",  
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],  
         "react/prop-types": "off"
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        },
+        "import/resolver": {
+            "node": {
+              "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+          }
     }
+        
 }
