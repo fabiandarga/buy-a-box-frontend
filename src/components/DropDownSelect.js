@@ -3,35 +3,31 @@
 /* eslint-disable no-shadow */
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
-// import makeAnimated from 'react-select/animated';
 import Select, { components } from 'react-select';
+import { ProductOption, ValueOption } from '../utils/prudoctIcon';
 
-// const animatedComponents = makeAnimated();
+const { Option } = components;
+
 /**
  * props.options
  * props.value
  * props.onChange
  */
 function DropDownSelect(props) {
-  const { options, value, onChange } = props;
+  const { options, value, onChange, variante } = props;
 
-  const { Option } = components;
-  function CustomSelectOption(props) {
-    return (
-      <Option {...props}>
-        <i className={`ss ss-${props.data.value.toLowerCase()}`} />
-        {props.data.value}
-      </Option>
-    );
-  }
+  let CustomSelectOption = function DefaultOption(props) {
+    return <Option {...props}>{props.data.value}</Option>;
+  };
 
-  function CustomSelectValue(props) {
-    return (
-      <div>
-        <i className={`ss ss-${props.data.value.toLowerCase()}`} />
-        {props.data.value}
-      </div>
-    );
+  let CustomSelectValue = function DefaultValueContainer(props) {
+    return props.data.value;
+  };
+
+  if (variante === 'product') {
+    CustomSelectOption = ProductOption;
+
+    CustomSelectValue = ValueOption;
   }
 
   return (
@@ -43,7 +39,7 @@ function DropDownSelect(props) {
         onChange={onChange}
         isMulti
         options={options}
-        components={{ Option: CustomSelectOption, SingleValue: CustomSelectValue }}
+        components={{ Option: CustomSelectOption, MultiValueLabel: CustomSelectValue }}
       />
     </div>
   );
