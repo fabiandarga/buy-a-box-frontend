@@ -1,12 +1,18 @@
-/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable no-shadow */
-/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import Select, { components } from 'react-select';
 import { ProductOption, ValueOption } from '../utils/prudoctIcon';
 
 const { Option } = components;
+
+function DefaultOption(props) {
+  const { data } = props;
+  return <Option {...props}> {data.value} </Option>;
+}
+
+function DefaultValueContainer(props) {
+  return props.data.value;
+}
 
 /**
  * props.options
@@ -16,13 +22,8 @@ const { Option } = components;
 function DropDownSelect(props) {
   const { options, value, onChange, variante } = props;
 
-  let CustomSelectOption = function DefaultOption(props) {
-    return <Option {...props}>{props.data.value}</Option>;
-  };
-
-  let CustomSelectValue = function DefaultValueContainer(props) {
-    return props.data.value;
-  };
+  let CustomSelectOption = DefaultOption;
+  let CustomSelectValue = DefaultValueContainer;
 
   if (variante === 'product') {
     CustomSelectOption = ProductOption;
@@ -35,7 +36,6 @@ function DropDownSelect(props) {
       <Select
         defaultValue={value}
         closeMenuOnSelect={false}
-        // components={animatedComponents}
         onChange={onChange}
         isMulti
         options={options}
