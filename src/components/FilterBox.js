@@ -80,6 +80,7 @@ function FilterBox(props) {
                 />
                 <div className="section-title">product</div>
                 <DropDownSelect
+                  variante="product"
                   options={productFilter}
                   value={selectedProducts}
                   onChange={onProductsChange}
