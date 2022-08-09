@@ -2,6 +2,7 @@
 import React from 'react';
 import { CategoryScale } from 'chart.js';
 import Chart from 'chart.js/auto';
+import 'chartjs-adapter-luxon';
 import { Line } from 'react-chartjs-2';
 import Card from './Card';
 import './priceChart.css';
@@ -46,11 +47,16 @@ function PriceChart(props) {
   }, {});
 
   const newDatasets = Object.entries(itemsSorted).map((set, index) => {
-    const data = set[1].sort((itemA, itemB) => new Date(itemA.date) - new Date(itemB.date));
+    const data = set[1]
+      .sort((itemA, itemB) => new Date(itemA.date) - new Date(itemB.date))
+      .map((item) => ({ x: item.date, y: item.price }));
     const color = getColorFromIndex(index);
+
+    // eslint-disable-next-line no-console
+    console.log('data', data);
     return {
       label: getLabelForDataSet(set[0]),
-      data: data.map((item) => ({ x: item.date, y: item.price })),
+      data,
       borderWidth: 3,
       backgroundColor: color,
       borderColor: color,
@@ -68,6 +74,17 @@ function PriceChart(props) {
           width={600}
           options={{
             maintainAspectRatio: false,
+            scales: {
+              xAxis: {
+                // The axis for this scale is determined from the first letter of the id as `'x'`
+                // It is recommended to specify `position` and / or `axis` explicitly.
+                type: 'time',
+                time: {
+                  unit: 'day',
+                  tooltipFormat: 'DD.MM.YYYY',
+                },
+              },
+            },
             plugins: {
               legend: {
                 position: 'bottom',
