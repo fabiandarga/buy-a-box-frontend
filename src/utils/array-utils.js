@@ -14,20 +14,15 @@ export const stringsToOptions = (array) => array.map((str) => ({ value: str, lab
 
 /**
  *
- * @param {*} array
- * @param {*} key
+ * @param {Object[]} array
+ * @param {string} key
  * @returns
  */
 export function pickAttribute(array, key) {
-  const itemUnique = array.reduce((arrays, item) => {
-    const value = item[key];
-    if (!arrays.includes(value)) {
-      arrays.push(value);
-    }
-    return arrays;
-  }, []);
-
-  return itemUnique;
+  return array.reduce(
+    (result, item) => (result.includes(item[key]) ? result : [...result, item[key]]),
+    []
+  );
 }
 
 export default {
