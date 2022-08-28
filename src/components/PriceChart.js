@@ -2,7 +2,7 @@
 import React from 'react';
 import { CategoryScale } from 'chart.js';
 import Chart from 'chart.js/auto';
-import 'chartjs-adapter-luxon';
+import 'chartjs-adapter-date-fns';
 import { Line } from 'react-chartjs-2';
 import Card from './Card';
 import './priceChart.css';
@@ -52,8 +52,6 @@ function PriceChart(props) {
       .map((item) => ({ x: item.date, y: item.price }));
     const color = getColorFromIndex(index);
 
-    // eslint-disable-next-line no-console
-    console.log('data', data);
     return {
       label: getLabelForDataSet(set[0]),
       data,
@@ -81,7 +79,7 @@ function PriceChart(props) {
                 type: 'time',
                 time: {
                   unit: 'day',
-                  tooltipFormat: 'DD.MM.YYYY',
+                  tooltipFormat: 'dd.MM.yyyy',
                 },
               },
             },
