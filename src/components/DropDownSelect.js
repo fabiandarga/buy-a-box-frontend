@@ -20,12 +20,12 @@ function DefaultValueContainer(props) {
  * props.onChange
  */
 function DropDownSelect(props) {
-  const { options, value, onChange, variante } = props;
+  const { options, value, onChange, variant } = props;
 
   let CustomSelectOption = DefaultOption;
   let CustomSelectValue = DefaultValueContainer;
 
-  if (variante === 'product') {
+  if (variant === 'product') {
     CustomSelectOption = ProductOption;
 
     CustomSelectValue = ValueOption;

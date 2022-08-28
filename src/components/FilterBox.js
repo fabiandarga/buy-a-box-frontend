@@ -7,6 +7,7 @@ import DropDownSelect from './DropDownSelect';
 import WojtekmajDaterangePicker from './WojtekmajDaterangePicker';
 import SchritteDropDown from './SchritteButtons';
 import { stringsToOptions } from '../utils/array-utils';
+import { getProductTitle } from '../utils/set-utils';
 import './filterBox.css';
 
 /**
@@ -20,7 +21,7 @@ import './filterBox.css';
  */
 function FilterBox(props) {
   const {
-    setOptions,
+    productOptions,
     shopOptions,
     selectedProducts,
     selectedShops,
@@ -37,15 +38,12 @@ function FilterBox(props) {
     selectedType,
     onTypeChange,
     typeOptions,
-    getProductTitle, // new code
   } = props;
 
-  const productFilter = stringsToOptions(setOptions)
-    .sort((a, b) => a.value - b.value)
-    .map((item) => ({
-      label: getProductTitle(item.value),
-      value: item.value,
-    }));
+  const productFilter = productOptions.map((item) => ({
+    label: getProductTitle(item),
+    value: item.code,
+  }));
   const shopFilter = stringsToOptions(shopOptions);
   const languageFilter = stringsToOptions(languageOptions);
   const typeFilter = stringsToOptions(typeOptions);
@@ -82,7 +80,7 @@ function FilterBox(props) {
                 />
                 <div className="section-title">product</div>
                 <DropDownSelect
-                  variante="product"
+                  variant="product"
                   options={productFilter}
                   value={selectedProducts}
                   onChange={onProductsChange}

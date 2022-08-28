@@ -52,16 +52,6 @@ function Dashboard() {
     fetchSets();
   }, []); // Dependancy Array
 
-  // eslint-disable-next-line consistent-return
-  const getProductTitle = (code) => {
-    // eslint-disable-next-line no-shadow
-    const set = sets.find((set) => set.code === code);
-    if (set) {
-      return `${set.code} / ${set.name} / ${set.date}`;
-    }
-    return code;
-  };
-
   // eslint-disable-next-line no-shadow
   const fetchData = async (from, to) => {
     const url = new URL(SCRAPER_PATH);
@@ -121,14 +111,16 @@ function Dashboard() {
     return true;
   });
 
+  const extendedProductOptions = productOptions
+    .map((code) => sets.find((set) => set.code === code) ?? { code, name: code, date: '-' })
+    .map((set) => ({ ...set, dateObj: new Date(set.date) }))
+    .sort((a, b) => b.dateObj - a.dateObj);
+
   return (
     <div>
       <PriceChart items={filterItems} />
       <div className="FilterBox-InfoText">
         <FilterBox
-          // new code
-          getProductTitle={getProductTitle}
-          // new code
           selectedShops={stringsToOptions(shopFilter)}
           onShopsChange={handleShopsSelected}
           shopOptions={shopsOptions}
@@ -141,7 +133,7 @@ function Dashboard() {
           onTypeChange={handleTypeSelected}
           typeOptions={typeOptions}
           items={filterItems}
-          setOptions={productOptions}
+          productOptions={extendedProductOptions}
           from={from}
           to={to}
           setFrom={setFrom}
