@@ -40,10 +40,12 @@ function FilterBox(props) {
     getProductTitle, // new code
   } = props;
 
-  const productFilter = stringsToOptions(setOptions).map((item) => ({
-    label: getProductTitle(item.value),
-    value: item.value,
-  }));
+  const productFilter = stringsToOptions(setOptions)
+    .sort((a, b) => a.value - b.value)
+    .map((item) => ({
+      label: getProductTitle(item.value),
+      value: item.value,
+    }));
   const shopFilter = stringsToOptions(shopOptions);
   const languageFilter = stringsToOptions(languageOptions);
   const typeFilter = stringsToOptions(typeOptions);
