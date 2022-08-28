@@ -32,7 +32,7 @@ function SchritteButtons(props) {
             onClick={() => {
               onChangeDateHandler(schritte.value);
             }}
-            variante="outline"
+            variant="outline"
             text={schritte.name}
           />
         ))}
