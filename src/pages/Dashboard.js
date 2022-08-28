@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
 import InfoText from '../components/InfoText';
 import FilterBox from '../components/FilterBox';
@@ -44,7 +45,7 @@ function Dashboard() {
       .then((data) => {
         setSets(data);
       })
-      .catch((err) => console.log('setsData err', err));
+      .catch(() => {});
   };
 
   useEffect(() => {
