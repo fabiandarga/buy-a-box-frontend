@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Card from './Card';
-import Button from './Button';
-import Tags from './Tags';
-import Popup from './Popup';
+import Card from './general/Card';
+import Button from './general/Button';
+import Tags from './general/Tags';
+import Popup from './general/Popup';
 import DropDownSelect from './DropDownSelect';
 import WojtekmajDaterangePicker from './WojtekmajDaterangePicker';
 import SchritteDropDown from './SchritteButtons';

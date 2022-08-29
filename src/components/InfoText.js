@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './Card';
+import Card from './general/Card';
 import './infoText.css';
 
 function InfoText() {
@@ -21,7 +21,8 @@ function InfoText() {
           Wofür ihr diese Informationen benutzen wollt, ist dabei euch überlassen. Ihr könnt
           natürlich vor einem Kauf die Preise der verschiedenen Magic Sets bei den bekanntesten
           Shops vergleichen. Auch wenn ihr selber ein Display verkaufen wollt könnt Ihr euch hier
-          über die aktuellen Preise informieren.
+          über die aktuellen Preise informieren. Wir versuchen alle möglichen Filter anzubieten um
+          euch eine individuelle Preisanalyse zu ermöglichen.
         </p>
         <h3>Die Idee</h3>
         <p className="infoTextP">

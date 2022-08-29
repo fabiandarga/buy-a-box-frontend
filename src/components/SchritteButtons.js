@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/button-has-type */
 import React from 'react';
-import Button from './Button';
+import Button from './general/Button';
 import './SchritteButtons.css';
 
 function SchritteButtons(props) {
