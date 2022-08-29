@@ -42,7 +42,8 @@ app.use('*', (req, res) => {
   return res.send(renderedHTML);
 });
 
-// run express server on port 9000
-app.listen('9000', () => {
+const PORT = process.env.PORT || '9000';
+
+app.listen(PORT, () => {
   console.log('Express server started at http://localhost:9000');
 });
