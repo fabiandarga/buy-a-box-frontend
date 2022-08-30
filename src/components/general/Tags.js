@@ -21,25 +21,25 @@ function Tags(props) {
         </div>
       </div>
       <div>
-        <div className="section-title">Products</div>
+        <div className="section-title">Erweiterungen</div>
         <div className="allTags">
-          {productFilter.length === 0 && <Tag>Alle Produkte</Tag>}
+          {productFilter.length === 0 && <Tag>Alle Erweiterungen</Tag>}
           {productFilter.map((filter) => (
             <Tag key={filter}>
               <i className={`ss ss-${filter.toLowerCase()}`} /> {filter}
             </Tag>
           ))}
         </div>
-        <div className="section-title">Language</div>
+        <div className="section-title">Sprachen</div>
         <div className="allTags">
           {languageFilter.length === 0 && <Tag>Alle Sprachen</Tag>}
           {languageFilter.map((filter) => (
             <Tag key={filter}>{filter}</Tag>
           ))}
         </div>
-        <div className="section-title">Type</div>
+        <div className="section-title">Produkttyp</div>
         <div className="allTags">
-          {typeFilter.length === 0 && <Tag>Alle Types</Tag>}
+          {typeFilter.length === 0 && <Tag>Alle Produkte</Tag>}
           {typeFilter.map((filter) => (
             <Tag key={filter}>{filter}</Tag>
           ))}

@@ -1,9 +1,7 @@
 
-.allTags{   
-  margin-bottom: 25px;    
+.allTags {  
   width: 100%;
   font-size: 10px;
-  padding: 5px;
   display: flex;  
   flex-wrap: wrap;
   justify-content: flex-start; 

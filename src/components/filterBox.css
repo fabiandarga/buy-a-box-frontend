@@ -1,17 +1,11 @@
-
-.filterBox {  
-  padding: 10px;
-}  
-
-.filterBoxHeader{ 
+.filterBoxHeader { 
   display: flex;  
-  justify-content: space-between; 
-  align-items: baseline; 
+  justify-content: space-between;
 } 
 
 .saveBtnFooter {   
   margin-top: 10px; 
-  padding: 0;
+  padding-top: 10px;
   display: flex;  
   justify-content: flex-end;  
   align-items: center;   

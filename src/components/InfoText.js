@@ -5,7 +5,7 @@ import './infoText.css';
 function InfoText() {
   return (
     <Card>
-      <div className="infoText">
+      <div className="content-section infoText">
         <h2>Über Buy a Box</h2>
         <h3>Die Mission</h3>
         <p className="infoTextP">
