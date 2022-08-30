@@ -16,27 +16,24 @@ function SchritteButtons(props) {
   };
 
   const SchritteOption = [
-    { value: dateThisWeek, label: 'This Week', name: 'This Week' },
-    { value: dateThisMonth, label: 'This Month', name: 'This Month' },
-    { value: dateThisYear, label: 'This Year', name: 'This Year' },
+    { value: dateThisWeek, label: 'Eine Woche' },
+    { value: dateThisMonth, label: 'Ein Monat' },
+    { value: dateThisYear, label: 'Ein Jahr' },
   ];
 
   return (
-    <div>
-      <div className="tagscategory">Schritte</div>
-      <div className="schritteButtonsContent">
-        {SchritteOption.map((schritte) => (
-          <Button
-            key={schritte.value}
-            className="button-outline"
-            onClick={() => {
-              onChangeDateHandler(schritte.value);
-            }}
-            variant="outline"
-            text={schritte.name}
-          />
-        ))}
-      </div>
+    <div className="schritteButtonsContent">
+      {SchritteOption.map((schritte) => (
+        <Button
+          key={schritte.value}
+          className="button-outline"
+          onClick={() => {
+            onChangeDateHandler(schritte.value);
+          }}
+          variant="outline"
+          text={schritte.label}
+        />
+      ))}
     </div>
   );
 }
