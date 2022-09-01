@@ -13,6 +13,25 @@
   text-align: center;
 }
 
-.content-app{ 
+.content-app { 
   flex-grow: 1;
+}
+
+.content-section {  
+  font-family: 'Raleway', sans-serif;  
+  text-align: left;
+  padding: 20px 15px;
+  margin: 0;
+  font-size: 12px; 
+  line-height: 18px; 
+  font-style: normal;
+} 
+
+.content-section h2 {  
+  font-size: 18px;
+  font-weight: 500;
+} 
+
+.content-section p { 
+  font-weight: 400;
 }

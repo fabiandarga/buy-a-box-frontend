@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 
-import Card from '../components/Card';
+import Card from '../components/general/Card';
 import './impressum.css';
 
 function Impressum() {

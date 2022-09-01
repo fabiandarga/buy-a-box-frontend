@@ -1,13 +1,7 @@
-import React, { useState } from 'react';
-import Card from './Card';
-import Button from './Button';
-import Tags from './Tags';
-import Popup from './Popup';
-import DropDownSelect from './DropDownSelect';
-import WojtekmajDaterangePicker from './WojtekmajDaterangePicker';
-import SchritteDropDown from './SchritteButtons';
-import { stringsToOptions } from '../utils/array-utils';
-import { getProductTitle } from '../utils/set-utils';
+import React from 'react';
+import Card from './general/Card';
+import Button from './general/Button';
+import Tags from './general/Tags';
 import './filterBox.css';
 
 /**
@@ -20,46 +14,16 @@ import './filterBox.css';
  * props.onSave()
  */
 function FilterBox(props) {
-  const {
-    productOptions,
-    shopOptions,
-    selectedProducts,
-    selectedShops,
-    onShopsChange,
-    onProductsChange,
-    onSave,
-    setFrom,
-    setTo,
-    from,
-    to,
-    selectedLanguage,
-    onLanguageChange,
-    languageOptions,
-    selectedType,
-    onTypeChange,
-    typeOptions,
-  } = props;
-
-  const productFilter = productOptions.map((item) => ({
-    label: getProductTitle(item),
-    value: item.code,
-  }));
-  const shopFilter = stringsToOptions(shopOptions);
-  const languageFilter = stringsToOptions(languageOptions);
-  const typeFilter = stringsToOptions(typeOptions);
-
-  const [showPopup, setShowPopup] = useState(false);
-
-  const togglePopup = () => {
-    setShowPopup(!showPopup);
-  };
+  const { selectedProducts, selectedShops, selectedLanguage, selectedType, onOpenFilter } = props;
 
   return (
     <Card>
-      <div className="filterBox">
+      <div className="content-section filterBox">
         <div className="filterBoxHeader">
-          <h3>Filter</h3>
-          <Button onClick={togglePopup} text="Open Filter" />
+          <h2>Preispunkte filtern</h2>
+          <Button size="small" onClick={onOpenFilter}>
+            Filter öffnen
+          </Button>
         </div>
         <Tags
           productOptions={selectedProducts}
@@ -67,48 +31,21 @@ function FilterBox(props) {
           langOptions={selectedLanguage}
           typeOptions={selectedType}
         />
-        {showPopup && (
-          <Popup
-            handleClose={togglePopup}
-            content={
-              <div>
-                <div className="section-title">Shops</div>
-                <DropDownSelect
-                  options={shopFilter}
-                  value={selectedShops}
-                  onChange={onShopsChange}
-                />
-                <div className="section-title">product</div>
-                <DropDownSelect
-                  variant="product"
-                  options={productFilter}
-                  value={selectedProducts}
-                  onChange={onProductsChange}
-                />
-                <div className="section-title">Language</div>
-                <DropDownSelect
-                  options={languageFilter}
-                  value={selectedLanguage}
-                  onChange={onLanguageChange}
-                />
-                <div className="section-title">Type</div>
-                <DropDownSelect options={typeFilter} value={selectedType} onChange={onTypeChange} />
-                <h2>Zeit-Achse</h2>
-                <WojtekmajDaterangePicker from={from} to={to} setFrom={setFrom} setTo={setTo} />
-                <SchritteDropDown setFrom={setFrom} setTo={setTo} />
-                <div className="saveBtnFooter">
-                  <Button
-                    onClick={() => {
-                      onSave();
-                      togglePopup();
-                    }}
-                    text="Save"
-                  />
-                </div>
-              </div>
-            }
-          />
-        )}
+        <div className="filter-examples">
+          <h3>Beispiel #1: Preisvergleich</h3>
+          Wenn du die Preise zu einem bestimmten Produkt vergleichen möchtest, stelle in dem
+          Filter-Popup einfach die gewünschte Erweiterung, Sprache und Produkttyp ein. Am besten
+          wählst u jeweils nur eine Sache aus. Das Feld für &quot;Shops&quot; lässt du einfach leer
+          um die Preise in allen shops zu sehen. Bei der Zeitspanne reicht es aus &quot;letzte
+          Woche&quot; auszuwählen.
+          <h3>Beispiel #2: Preisentwicklung bei Collector Displays</h3>
+          Um zu sehen, wie sich die Preisentwicklung bei Collector Displays entwickeln und wann
+          diese nach einem release ausverkauft sind kannst du folgende Filter benutzen: Wähle z.B.
+          die letzten 4 Erweiterung aus. Bei Produkttyp musst du natürlich &quot;Collector&quot;
+          einstellen. Damit es übersichtlich bleibt wähle nur eine Sprache aus. Das Feld für
+          &quot;Shops&quot; lässt du auch hier leer. Bei der Zeitspanne wähle &quot;letztes
+          Jahr&quot; aus oder sogar länger.
+        </div>
       </div>
     </Card>
   );

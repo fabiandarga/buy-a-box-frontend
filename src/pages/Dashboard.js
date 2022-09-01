@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import InfoText from '../components/InfoText';
 import FilterBox from '../components/FilterBox';
+import FilterPopup from '../components/FilterPopup';
 import PriceChart from '../components/PriceChart';
 import { optionsToStrings, stringsToOptions, pickAttribute } from '../utils/array-utils';
 import './dashboard.css';
@@ -26,6 +27,12 @@ function Dashboard() {
   const [shopsOptions, setShopsOptions] = useState([]);
   const [languageOptions, setLanguageOptions] = useState([]);
   const [typeOptions, setTypeOptions] = useState([]);
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
 
   /**
    * Takes the server data and calculates the filter option for this set of data
@@ -122,26 +129,36 @@ function Dashboard() {
       <div className="FilterBox-InfoText">
         <FilterBox
           selectedShops={stringsToOptions(shopFilter)}
-          onShopsChange={handleShopsSelected}
-          shopOptions={shopsOptions}
           selectedProducts={stringsToOptions(productFilter)}
-          onProductsChange={handleProductsSelected}
           selectedLanguage={stringsToOptions(languageFilter)}
-          onLanguageChange={handleLanguagesSelected}
-          languageOptions={languageOptions}
           selectedType={stringsToOptions(typeFilter)}
-          onTypeChange={handleTypeSelected}
-          typeOptions={typeOptions}
-          items={filterItems}
-          productOptions={extendedProductOptions}
-          from={from}
-          to={to}
-          setFrom={setFrom}
-          setTo={setTo}
-          onSave={handleFilterSaved}
+          onOpenFilter={togglePopup}
         />
         <InfoText />
       </div>
+
+      <FilterPopup
+        show={showPopup}
+        selectedShops={stringsToOptions(shopFilter)}
+        selectedProducts={stringsToOptions(productFilter)}
+        selectedLanguage={stringsToOptions(languageFilter)}
+        selectedType={stringsToOptions(typeFilter)}
+        onShopsChange={handleShopsSelected}
+        onProductsChange={handleProductsSelected}
+        onLanguageChange={handleLanguagesSelected}
+        onTypeChange={handleTypeSelected}
+        shopOptions={shopsOptions}
+        productOptions={extendedProductOptions}
+        languageOptions={languageOptions}
+        typeOptions={typeOptions}
+        items={filterItems}
+        from={from}
+        to={to}
+        setFrom={setFrom}
+        setTo={setTo}
+        onSave={handleFilterSaved}
+        onClose={togglePopup}
+      />
     </div>
   );
 }
