@@ -4,7 +4,7 @@ import { CategoryScale } from 'chart.js';
 import Chart from 'chart.js/auto';
 import 'chartjs-adapter-date-fns';
 import { Line } from 'react-chartjs-2';
-import Card from './Card';
+import Card from './general/Card';
 import './priceChart.css';
 
 const allColors = [
