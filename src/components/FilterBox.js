@@ -32,7 +32,7 @@ function FilterBox(props) {
           typeOptions={selectedType}
         />
         <div className="filter-examples">
-          <h3>Beispiel #1: Preisvergleich</h3>
+          <h3>Beispiel #1: Booster Display Preisvergleich</h3>
           Wenn du die Preise zu einem bestimmten Produkt vergleichen möchtest, stelle in dem
           Filter-Popup einfach die gewünschte Erweiterung, Sprache und Produkttyp ein. Am besten
           wählst u jeweils nur eine Sache aus. Das Feld für &quot;Shops&quot; lässt du einfach leer

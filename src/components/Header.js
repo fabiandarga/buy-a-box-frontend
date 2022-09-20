@@ -9,7 +9,7 @@ function Header() {
         <Link className="link-style" to="/">
           <span className="websiteName">Buy a Box</span>
         </Link>
-        <span className="websiteTitle">| MTG Display Preisanalyse</span>
+        <span className="websiteTitle">| MTG Booster Display Preisanalyse</span>
       </h1>
     </div>
   );
