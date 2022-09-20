@@ -23,7 +23,7 @@ if (process.env.NODE_BUILD_TARGET !== 'dev') {
 app.use(compression());
 
 // serve static assets
-app.get(/\.(js|css|map|ico)$/, express.static(resolve(__dirname, '../build')));
+app.get(/\.(png|js|css|map|ico|txt)$/, express.static(resolve(__dirname, '../build')));
 
 // for any other requests, send `index.html` as a response
 app.use('*', (req, res) => {
