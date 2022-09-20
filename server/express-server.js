@@ -4,6 +4,7 @@ import { resolve } from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import enforce from 'express-sslify';
+import compression from 'compression';
 
 // import App component
 import App from '../src/App';
@@ -18,6 +19,8 @@ if (process.env.NODE_BUILD_TARGET !== 'dev') {
   // a load balancer (e.g. Heroku). See further comments below
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
 }
+
+app.use(compression());
 
 // serve static assets
 app.get(/\.(js|css|map|ico)$/, express.static(resolve(__dirname, '../build')));
