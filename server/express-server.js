@@ -3,6 +3,7 @@ import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import enforce from 'express-sslify';
 
 // import App component
 import App from '../src/App';
@@ -11,6 +12,12 @@ const { StaticRouter } = require('react-router-dom/server');
 
 // create express application
 const app = express();
+
+if (process.env.NODE_BUILD_TARGET !== 'dev') {
+  // Use enforce.HTTPS({ trustProtoHeader: true }) in case you are behind
+  // a load balancer (e.g. Heroku). See further comments below
+  app.use(enforce.HTTPS());
+}
 
 // serve static assets
 app.get(/\.(js|css|map|ico)$/, express.static(resolve(__dirname, '../build')));
