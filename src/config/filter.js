@@ -1,6 +1,6 @@
 export default {
-  productFilter: ['UNF'],
-  languageFilter: ['deu', 'eng'],
+  productFilter: ['BRO'],
+  languageFilter: ['eng'],
   typeFilter: ['draft', 'set', 'collector'],
   shopFilter: [],
 };
