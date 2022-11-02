@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom';
 import './footer.css';
 
 function Footer() {
-  const foo = '#';
+  const onPreferencesClick = () => {
+    if (!window || !window.cookieconsent) {
+      return;
+    }
+    window.cookieconsent.openPreferencesCenter();
+  };
   return (
     <div className="footer">
       <h3 className="footer-logoName">Buy a Box</h3>
@@ -14,11 +19,9 @@ function Footer() {
       </div>
       <div className="Impressum-link">
         <Link to="/Impressum"> Impressum </Link>
-      </div>
-      <div>
-        <Link to={foo} id="open_preferences_center">
+        <button className="openPreferencesBTN" type="button" onClick={onPreferencesClick}>
           Update cookies preferences
-        </Link>
+        </button>
       </div>
     </div>
   );

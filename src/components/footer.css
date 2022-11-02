@@ -1,68 +1,81 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
-.footer {  
+.footer {
   box-sizing: border-box;
   width: 100%;
-  background-color: #6C7279;  
-  color: #FFFFFF;
-  padding: 10px; 
-  text-align: center;  
-  font-Size: 11px;
-} 
+  background-color: #6c7279;
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+  font-size: 11px;
+}
 
-.footer-logoName { 
-  font-size: 14px; 
-  font-weight: bold;  
-  font-family: 'Lobster', cursive; 
-  text-align: center;  
+.footer-logoName {
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Lobster', cursive;
+  text-align: center;
   margin: 10px 5px;
-} 
+}
 
-.footer-content-item { 
+.footer-content-item {
   margin: 10px 0px;
-} 
+}
 
-.developer-content {  
-  margin: 10px 0px; 
-  color: #D9D9D9; 
-  display: flex; 
+.developer-content {
+  margin: 10px 0px;
+  color: #d9d9d9;
+  display: flex;
   flex-direction: column;
-} 
+}
 
-.developer { 
+.developer {
   margin-bottom: 5px;
+}
+
+.Impressum-link { 
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  color: #ffffff;
 } 
 
-.Impressum-link{ 
- margin-bottom: 5px; 
- color: #FFFFFF;
-} 
+.openPreferencesBTN {   
+  font-size: 15px;
+  width: max-content;
+  padding: 5px 10px;  
+  border: none; 
+  border-bottom: 1px solid #ffffff; 
+  padding: 0; 
+  margin-left: 10px;
+  background-color: transparent;
+  color: #ffffff;
+}
 
-.Impressum-link a{ 
-  color: #FFFFFF;
- } 
+.Impressum-link a {
+  color: #ffffff;
+}
 
-
- @media ( min-width: 800px ) {
-	.developer-content { 
-    flex-direction: row;  
-    justify-content: center; 
+@media (min-width: 800px) {
+  .developer-content {
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
     gap: 10px;
-	}  
+  }
 
-  .developer { 
+  .developer {
     margin-bottom: 0;
-  } 
-  
-  
-  
-  .Impressum-link{ 
-   margin-bottom: 8px;
-  } 
+  }
 
-  .footer { 
-    padding: 5px; 
+  .Impressum-link {
+    margin-bottom: 8px;
+  }
+
+  .footer {
+    padding: 5px;
     width: 100%;
   }
 }
