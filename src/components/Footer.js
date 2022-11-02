@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './footer.css';
 
 function Footer() {
+  const foo = '#';
   return (
     <div className="footer">
       <h3 className="footer-logoName">Buy a Box</h3>
@@ -13,6 +14,11 @@ function Footer() {
       </div>
       <div className="Impressum-link">
         <Link to="/Impressum"> Impressum </Link>
+      </div>
+      <div>
+        <Link to={foo} id="open_preferences_center">
+          Update cookies preferences
+        </Link>
       </div>
     </div>
   );
