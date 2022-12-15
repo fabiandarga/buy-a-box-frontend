@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Impressum from './pages/Impressum';
+import CompareProducts from './pages/CompareProducts';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               </div>
             }
           />
+          <Route path="/compare" element={<CompareProducts />} />
           <Route path="/Impressum" element={<Impressum />} />
         </Routes>
       </div>

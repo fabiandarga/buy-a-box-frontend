@@ -1,11 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
 .header {   
   width: 100%;
- display: flex; 
+ display: flex;  
+ flex-direction:column;
  justify-content: space-around; 
- align-items: baseline; 
- background-color: #15C5CE;
+ align-items: center; 
 } 
+
+.logo {   
+  width: 100%;
+  display: flex; 
+  justify-content: space-around; 
+  align-items: baseline; 
+  background-color: #15C5CE;
+}
+
+.navContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center; 
+  align-items: flex-end; 
+  background-color: none ;
+}
 
 .websiteName {   
 color: #FFFFFF ;
