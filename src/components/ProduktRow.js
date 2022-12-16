@@ -1,9 +1,10 @@
 import React from 'react';
 import Button from './general/Button';
+import LanguageFlag from './general/LanguageFlag';
 import './produktRow.css';
 
 function ProduktRow(props) {
-  const { edition, produkt, sprache, preis, versand, shop } = props;
+  const { edition, produkt, language, preis, versand, shop } = props;
   return (
     <tr>
       <td> @ </td>
@@ -11,7 +12,7 @@ function ProduktRow(props) {
         <a href="https://www.trader-online.de/startseite/">
           <div>{edition}</div>
           <div className="productLanguage">
-            {produkt}-<img src={sprache} alt="Language" />
+            {produkt}-<LanguageFlag language={language} />
           </div>
         </a>
       </td>

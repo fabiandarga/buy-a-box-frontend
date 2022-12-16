@@ -19,7 +19,7 @@ function Table(props) {
           <ProduktRow
             edition={item.edition}
             produkt={item.produkt}
-            sprache={item.sprache}
+            language={item.language}
             preis={item.preis}
             shop={item.shop}
             versand={item.versand}

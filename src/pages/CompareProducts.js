@@ -1,14 +1,11 @@
 import React from 'react';
 import Table from '../components/Table';
-import iconGermany from '../images/icon-germany.png';
-import iconGreatBritain from '../images/icon-great-britain.png';
-import iconJapan from '../images/icon-japan.png';
 
 const items = [
   {
     edition: 'Dominare Remastered',
     produkt: 'Collector-Booster',
-    sprache: iconGreatBritain,
+    language: 'deu',
     shop: 'Trader-online.de',
     versand: [
       'Deutschland: 2-3 Tage / 3,99€',
@@ -20,7 +17,7 @@ const items = [
   {
     edition: 'Dominare Remastered',
     produkt: 'Collector-Booster',
-    sprache: iconGermany,
+    language: 'eng',
     shop: 'Trader-online.de',
     versand: [
       'Deutschland: 2-3 Tage / 3,99€',
@@ -32,7 +29,7 @@ const items = [
   {
     edition: 'Dominare Remastered',
     produkt: 'Collector-Booster',
-    sprache: iconJapan,
+    language: 'jap',
     shop: 'Trader-online.de',
     versand: [
       'Deutschland: 2-3 Tage / 3,99€',
