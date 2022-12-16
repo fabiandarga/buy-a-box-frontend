@@ -1,0 +1,27 @@
+.editionProductLanguage{
+     font-size: 16px; 
+     font-weight: bold;
+}
+
+.price{
+    font-size: 18px; 
+    font-weight: bold;
+}
+
+.shipping{
+    font-size: 12px;
+}
+
+.shop{
+    font-size: 18px;
+}
+
+.productLanguage{ 
+    display: flex; 
+    align-items: center; 
+}
+
+img{ 
+    width: 30px;
+    margin-left: 10px;
+}
