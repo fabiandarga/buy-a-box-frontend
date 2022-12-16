@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState, useEffect } from 'react';
 import Table from '../components/Table';
 
 const items = [
@@ -40,7 +40,27 @@ const items = [
   },
 ];
 
+const SCRAPER_PATH = 'https://buy-a-box-backend.herokuapp.com/data/';
+
 function CompareProducts() {
+  const [allItems, setAllItems] = useState([]);
+  // eslint-disable-next-line no-shadow
+  const fetchData = async () => {
+    const url = new URL(SCRAPER_PATH);
+    await fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setAllItems(data);
+      })
+      .catch((err) => err);
+  };
+
+  console.log(allItems);
+  console.log(items);
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div>
       <h1>Compare Products</h1>
