@@ -9,7 +9,6 @@ function ProduktRow(props) {
 
   let iconClassname = `ss ss-${code}`;
   let shopHref = url;
-  console.log('shopHref', shopHref);
 
   return (
     <tr>

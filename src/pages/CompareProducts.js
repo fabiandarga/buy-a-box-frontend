@@ -5,10 +5,9 @@ const SCRAPER_PATH = 'https://buy-a-box-backend.herokuapp.com/data/';
 const SHOPS_PATH = 'http://localhost:4000/shops';
 
 function CompareProducts() {
-  // const [from, setFrom] = useState(new Date(Date.now() - 2628000000).toISOString().slice(0, 10));
   const [allItems, setAllItems] = useState([]);
   const [shops, setShops] = useState([]);
-  // eslint-disable-next-line no-shadow
+
   const fetchData = async () => {
     const url = new URL(SCRAPER_PATH);
     url.searchParams.append('from', new Date(Date.now() - 86400000).toISOString().slice(0, 10));
