@@ -1,15 +1,24 @@
+/* eslint-disable prefer-const */
 import React from 'react';
 import Button from './general/Button';
 import LanguageFlag from './general/LanguageFlag';
 import './produktRow.css';
 
 function ProduktRow(props) {
-  const { edition, produkt, language, preis, versand, shop } = props;
+  const { edition, produkt, language, price, shipping, shop, code, url } = props;
+
+  let iconClassname = `ss ss-${code}`;
+  let shopHref = url;
+  console.log('shopHref', shopHref);
+
   return (
     <tr>
-      <td> @ </td>
+      <td>
+        {' '}
+        <i className={iconClassname} />{' '}
+      </td>
       <td className="editionProductLanguage">
-        <a href="https://www.trader-online.de/startseite/">
+        <a href={shopHref}>
           <div>{edition}</div>
           <div className="productLanguage">
             {produkt}-<LanguageFlag language={language} />
@@ -17,18 +26,16 @@ function ProduktRow(props) {
         </a>
       </td>
       <td className="price">
-        <a href="https://www.trader-online.de/startseite/">{preis}</a>
+        <a href={shopHref}>{`${price.replace('.', ',')}€`}</a>
       </td>
       <td className="shipping">
-        {versand.map((item) => (
-          <li>{item}</li>
-        ))}
+        <li>{shipping}</li>
       </td>
       <td className="shop">
-        <a href="https://www.trader-online.de/startseite/">{shop}</a>
+        <a href={shopHref}>{shop}</a>
       </td>
       <td>
-        <a href="https://www.trader-online.de/startseite/">
+        <a href={shopHref}>
           <Button text="Jetzt kaufen" variant="outline" size="small" />
         </a>
       </td>

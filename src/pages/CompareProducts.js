@@ -1,52 +1,17 @@
 import { React, useState, useEffect } from 'react';
 import Table from '../components/Table';
 
-const items = [
-  {
-    edition: 'Dominare Remastered',
-    produkt: 'Collector-Booster',
-    language: 'deu',
-    shop: 'Trader-online.de',
-    versand: [
-      'Deutschland: 2-3 Tage / 3,99€',
-      'Osterreich: 4-5 Tage / 5,99€',
-      'Schweiz: 4-5 Tage /6,99€',
-    ],
-    preis: '284,99€',
-  },
-  {
-    edition: 'Dominare Remastered',
-    produkt: 'Collector-Booster',
-    language: 'eng',
-    shop: 'Trader-online.de',
-    versand: [
-      'Deutschland: 2-3 Tage / 3,99€',
-      'Osterreich: 4-5 Tage / 5,99€',
-      'Schweiz: 4-5 Tage /6,99€',
-    ],
-    preis: '284,99€',
-  },
-  {
-    edition: 'Dominare Remastered',
-    produkt: 'Collector-Booster',
-    language: 'jap',
-    shop: 'Trader-online.de',
-    versand: [
-      'Deutschland: 2-3 Tage / 3,99€',
-      'Osterreich: 4-5 Tage / 5,99€',
-      'Schweiz: 4-5 Tage /6,99€',
-    ],
-    preis: '284,99€',
-  },
-];
-
 const SCRAPER_PATH = 'https://buy-a-box-backend.herokuapp.com/data/';
+const SHOPS_PATH = 'http://localhost:4000/shops';
 
 function CompareProducts() {
+  // const [from, setFrom] = useState(new Date(Date.now() - 2628000000).toISOString().slice(0, 10));
   const [allItems, setAllItems] = useState([]);
+  const [shops, setShops] = useState([]);
   // eslint-disable-next-line no-shadow
   const fetchData = async () => {
     const url = new URL(SCRAPER_PATH);
+    url.searchParams.append('from', new Date(Date.now() - 86400000).toISOString().slice(0, 10));
     await fetch(url)
       .then((response) => response.json())
       .then((data) => {
@@ -55,16 +20,24 @@ function CompareProducts() {
       .catch((err) => err);
   };
 
-  console.log(allItems);
-  console.log(items);
+  const fetchShops = async () => {
+    await fetch(SHOPS_PATH)
+      .then((response) => response.json())
+      .then((data) => {
+        setShops(data);
+      })
+      .catch((err) => err);
+  };
+
   useEffect(() => {
     fetchData();
+    fetchShops();
   }, []);
 
   return (
     <div>
       <h1>Compare Products</h1>
-      <Table items={items} />
+      <Table items={allItems} shops={shops} />
     </div>
   );
 }
