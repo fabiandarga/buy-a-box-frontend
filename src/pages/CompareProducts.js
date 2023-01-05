@@ -74,7 +74,6 @@ function CompareProducts(props) {
 
   return (
     <div>
-      <h1>Compare Products</h1>
       <div>
         <SearchOption
           selectedProducts={selectedProducts}

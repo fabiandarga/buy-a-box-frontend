@@ -33,7 +33,7 @@ function Table(props) {
 
   return (
     <div className="tableContent">
-      <tr>
+      <tr className="inscriptions">
         <th> </th>
         <th>Name</th>
         <th>Preis</th>

@@ -11,8 +11,8 @@ function ProduktRow(props) {
   let shopHref = url;
 
   return (
-    <tr>
-      <td>
+    <tr className="comparisonTable">
+      <td className="icon">
         {' '}
         <i className={iconClassname} />{' '}
       </td>
@@ -28,12 +28,13 @@ function ProduktRow(props) {
         <a href={shopHref}>{`${price.replace('.', ',')}€`}</a>
       </td>
       <td className="shipping">
+        <div className="shippingHeadlineForMobile">LieferKosten</div>
         <li>{shipping}</li>
       </td>
       <td className="shop">
         <a href={shopHref}>{shop}</a>
       </td>
-      <td>
+      <td className="btnToShop">
         <a href={shopHref}>
           <Button text="Jetzt kaufen" variant="outline" size="small" />
         </a>
