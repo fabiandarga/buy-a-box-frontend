@@ -29,7 +29,7 @@ function getShopShippingForItem(item, shops) {
 }
 
 function Table(props) {
-  const { items, shops } = props;
+  const { shops, filterItems } = props;
 
   return (
     <div className="tableContent">
@@ -41,7 +41,7 @@ function Table(props) {
         <th>Shop</th>
         <th> </th>
       </tr>
-      {items.map((item) => (
+      {filterItems.map((item) => (
         <ProduktRow
           key={item.id}
           edition={item.name}

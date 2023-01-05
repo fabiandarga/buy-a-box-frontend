@@ -45,9 +45,15 @@ export default function FilterPopup(props) {
       content={
         <div>
           <div className="section-title">Shops</div>
-          <DropDownSelect options={shopFilter} value={selectedShops} onChange={onShopsChange} />
+          <DropDownSelect
+            multi="multi"
+            options={shopFilter}
+            value={selectedShops}
+            onChange={onShopsChange}
+          />
           <div className="section-title">Erweiterungen</div>
           <DropDownSelect
+            multi="multi"
             variant="product"
             options={productFilter}
             value={selectedProducts}
@@ -55,12 +61,18 @@ export default function FilterPopup(props) {
           />
           <div className="section-title">Sprache</div>
           <DropDownSelect
+            multi="multi"
             options={languageFilter}
             value={selectedLanguage}
             onChange={onLanguageChange}
           />
           <div className="section-title">Produkttyp</div>
-          <DropDownSelect options={typeFilter} value={selectedType} onChange={onTypeChange} />
+          <DropDownSelect
+            multi="multi"
+            options={typeFilter}
+            value={selectedType}
+            onChange={onTypeChange}
+          />
 
           <h3>Zeitraum</h3>
           <WojtekmajDaterangePicker from={from} to={to} setFrom={setFrom} setTo={setTo} />

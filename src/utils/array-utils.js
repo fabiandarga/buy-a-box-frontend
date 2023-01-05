@@ -3,7 +3,7 @@
  * @param {{label:string, value:string}[]} options
  * @returns {string[]}
  */
-export const optionsToStrings = (options) => options.map((item) => item.value);
+export const optionsToStrings = (options) => options.map((option) => option.value);
 
 /**
  * Transforms a flat string array into label-value objects
