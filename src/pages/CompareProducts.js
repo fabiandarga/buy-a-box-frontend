@@ -3,9 +3,7 @@ import Table from '../components/Table';
 import SearchOption from '../components/SearchOption';
 import FilterConfig from '../config/filter';
 import { optionsToStrings } from '../utils/array-utils';
-
-const SCRAPER_PATH = 'https://buy-a-box-backend.herokuapp.com/data/';
-const SHOPS_PATH = 'http://localhost:4000/shops';
+import { fetchDataCompareProducts, fetchShops } from '../utils/api';
 
 function CompareProducts(props) {
   const {
@@ -22,29 +20,13 @@ function CompareProducts(props) {
   const [languageFilter, setLanguageFilter] = useState(FilterConfig.languageFilter);
   const [typeFilter, setTypeFilter] = useState(FilterConfig.typeFilter);
 
-  const fetchData = async () => {
-    const url = new URL(SCRAPER_PATH);
-    url.searchParams.append('from', new Date(Date.now() - 86400000).toISOString().slice(0, 10));
-    await fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setAllItems(data);
-      })
-      .catch((err) => err);
-  };
-
-  const fetchShops = async () => {
-    await fetch(SHOPS_PATH)
-      .then((response) => response.json())
-      .then((data) => {
-        setShops(data);
-      })
-      .catch((err) => err);
-  };
-
   useEffect(() => {
-    fetchData();
-    fetchShops();
+    fetchDataCompareProducts().then((data) => {
+      setAllItems(data);
+    });
+    fetchShops().then((data) => {
+      setShops(data);
+    });
   }, []);
 
   const handleProductsSelected = (selected) => {

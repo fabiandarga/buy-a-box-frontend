@@ -61,6 +61,8 @@ img{
 
     .comparisonTable{
         display: table-row;
+        text-align: center;
+       vertical-align: middle;
     }
 	
     .editionProductLanguage a {

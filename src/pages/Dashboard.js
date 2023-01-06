@@ -4,20 +4,16 @@ import InfoText from '../components/InfoText';
 import FilterBox from '../components/FilterBox';
 import FilterPopup from '../components/FilterPopup';
 import PriceChart from '../components/PriceChart';
-import { stringsToOptions } from '../utils/array-utils';
+import { optionsToStrings, stringsToOptions } from '../utils/array-utils';
+import FilterConfig from '../config/filter';
 import './dashboard.css';
 
 function Dashboard(props) {
+  const [productFilter, setProductFilter] = useState(FilterConfig.productFilter);
+  const [shopFilter, setShopFilter] = useState(FilterConfig.shopFilter);
+  const [languageFilter, setLanguageFilter] = useState(FilterConfig.languageFilter);
+  const [typeFilter, setTypeFilter] = useState(FilterConfig.typeFilter);
   const {
-    filterItems,
-    shopFilter,
-    productFilter,
-    languageFilter,
-    typeFilter,
-    handleShopsSelected,
-    handleProductsSelected,
-    handleLanguagesSelected,
-    handleTypeSelected,
     shopsOptions,
     extendedProductOptions,
     languageOptions,
@@ -27,9 +23,41 @@ function Dashboard(props) {
     setFrom,
     setTo,
     handleFilterSaved,
+    allItems,
   } = props;
 
+  const filterItems = allItems.filter((item) => {
+    if (productFilter.length > 0 && !productFilter.includes(item.code)) {
+      return false;
+    }
+    if (typeFilter.length > 0 && !typeFilter.includes(item.type)) {
+      return false;
+    }
+    if (shopFilter.length > 0 && !shopFilter.includes(item.shop)) {
+      return false;
+    }
+    if (languageFilter.length > 0 && !languageFilter.includes(item.lang)) {
+      return false;
+    }
+    return true;
+  });
+
   const [showPopup, setShowPopup] = useState(false);
+
+  const handleShopsSelected = (selected) => {
+    setShopFilter(optionsToStrings(Array.isArray(selected) ? selected : [selected]));
+  };
+  const handleProductsSelected = (selected) => {
+    setProductFilter(optionsToStrings(Array.isArray(selected) ? selected : [selected]));
+  };
+
+  const handleLanguagesSelected = (selected) => {
+    setLanguageFilter(optionsToStrings(Array.isArray(selected) ? selected : [selected]));
+  };
+
+  const handleTypeSelected = (selected) => {
+    setTypeFilter(optionsToStrings(Array.isArray(selected) ? selected : [selected]));
+  };
 
   const togglePopup = () => {
     setShowPopup(!showPopup);

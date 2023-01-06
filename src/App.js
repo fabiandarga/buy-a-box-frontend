@@ -6,22 +6,15 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Impressum from './pages/Impressum';
 import CompareProducts from './pages/CompareProducts';
-import { optionsToStrings, pickAttribute } from './utils/array-utils';
-import FilterConfig from './config/filter';
-
-const SCRAPER_PATH = 'https://buy-a-box-backend.herokuapp.com/data/';
-const SETS_PATH = 'https://buy-a-box-backend.herokuapp.com/sets/';
+import { pickAttribute } from './utils/array-utils';
+import { fetchData, fetchSets } from './utils/api';
 
 function App() {
-  const [allItems, setAllItems] = useState([]);
-  const [productFilter, setProductFilter] = useState(FilterConfig.productFilter);
-  const [shopFilter, setShopFilter] = useState(FilterConfig.shopFilter);
-  const [languageFilter, setLanguageFilter] = useState(FilterConfig.languageFilter);
-  const [typeFilter, setTypeFilter] = useState(FilterConfig.typeFilter);
   const [from, setFrom] = useState(new Date(Date.now() - 2628000000).toISOString().slice(0, 10));
   const [to, setTo] = useState(new Date().toISOString().slice(0, 10));
-  const [productOptions, setProductOptions] = useState([]);
   const [shopsOptions, setShopsOptions] = useState([]);
+  const [allItems, setAllItems] = useState([]);
+  const [productOptions, setProductOptions] = useState([]);
   const [languageOptions, setLanguageOptions] = useState([]);
   const [typeOptions, setTypeOptions] = useState([]);
 
@@ -37,76 +30,20 @@ function App() {
 
   const [sets, setSets] = useState([]);
 
-  const fetchSets = async () => {
-    await fetch(SETS_PATH)
-      .then((response) => response.json())
-      .then((data) => {
-        setSets(data);
-      })
-      .catch(() => {});
-  };
-
   useEffect(() => {
-    fetchSets();
+    fetchSets().then((data) => {
+      setSets(data);
+    });
+    fetchData().then((data) => {
+      setAllItems(data);
+      calculateOptions(data);
+    });
   }, []); // Dependancy Array
-
-  // eslint-disable-next-line no-shadow
-  const fetchData = async (from, to) => {
-    const url = new URL(SCRAPER_PATH);
-    if (from) {
-      url.searchParams.append('from', from);
-    }
-    if (to) {
-      url.searchParams.append('to', to);
-    }
-    await fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        calculateOptions(data);
-        setAllItems(data);
-      })
-      .catch((err) => err);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const handleFilterSaved = () => {
     // reload data with set time range
     fetchData(from, to);
   };
-
-  const handleShopsSelected = (selected) => {
-    setShopFilter(optionsToStrings(Array.isArray(selected) ? selected : [selected]));
-  };
-  const handleProductsSelected = (selected) => {
-    setProductFilter(optionsToStrings(Array.isArray(selected) ? selected : [selected]));
-  };
-
-  const handleLanguagesSelected = (selected) => {
-    setLanguageFilter(optionsToStrings(Array.isArray(selected) ? selected : [selected]));
-  };
-
-  const handleTypeSelected = (selected) => {
-    setTypeFilter(optionsToStrings(Array.isArray(selected) ? selected : [selected]));
-  };
-
-  const filterItems = allItems.filter((item) => {
-    if (productFilter.length > 0 && !productFilter.includes(item.code)) {
-      return false;
-    }
-    if (typeFilter.length > 0 && !typeFilter.includes(item.type)) {
-      return false;
-    }
-    if (shopFilter.length > 0 && !shopFilter.includes(item.shop)) {
-      return false;
-    }
-    if (languageFilter.length > 0 && !languageFilter.includes(item.lang)) {
-      return false;
-    }
-    return true;
-  });
 
   const extendedProductOptions = productOptions
     .map((code) => sets.find((set) => set.code === code) ?? { code, name: code, date: '-' })
@@ -124,15 +61,16 @@ function App() {
               <div>
                 <div className="page">
                   <Dashboard
-                    filterItems={filterItems}
-                    shopFilter={shopFilter}
-                    productFilter={productFilter}
-                    languageFilter={languageFilter}
-                    typeFilter={typeFilter}
-                    handleShopsSelected={handleShopsSelected}
-                    handleProductsSelected={handleProductsSelected}
-                    handleLanguagesSelected={handleLanguagesSelected}
-                    handleTypeSelected={handleTypeSelected}
+                    // filterItems={filterItems}
+                    // shopFilter={shopFilter}
+                    // productFilter={productFilter}
+                    // languageFilter={languageFilter}
+                    // typeFilter={typeFilter}
+                    // setShopFilter={setShopFilter}
+                    // setProductFilter={setProductFilter}
+                    // setLanguageFilter={setLanguageFilter}
+                    // setTypeFilter={setTypeFilter}
+                    allItems={allItems}
                     shopsOptions={shopsOptions}
                     extendedProductOptions={extendedProductOptions}
                     languageOptions={languageOptions}

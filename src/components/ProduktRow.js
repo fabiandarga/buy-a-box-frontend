@@ -7,8 +7,8 @@ import './produktRow.css';
 function ProduktRow(props) {
   const { edition, produkt, language, price, shipping, shop, code, url } = props;
 
-  let iconClassname = `ss ss-${code}`;
-  let shopHref = url;
+  const iconClassname = `ss ss-${code}`;
+  const shopHref = url;
 
   return (
     <tr className="comparisonTable">
