@@ -3,12 +3,7 @@ const BASE_URL = process.env.REACT_APP_SERVER_URL;
 // const BASE_URL = 'https://buy-a-box-backend.herokuapp.com';
 const DATA_PATH = `${BASE_URL}/data/`;
 const SETS_PATH = `${BASE_URL}/sets/`;
-const SHOPS_PATH = `http://localhost:4000/shops/`;
-
-// eslint-disable-next-line prefer-template
-console.log('BASE_URL ' + BASE_URL);
-// eslint-disable-next-line prefer-template
-console.log('DATA_PATH ' + DATA_PATH);
+const SHOPS_PATH = `${BASE_URL}/shops/`;
 
 export async function fetchData(from, to) {
   // return Data als Objekt

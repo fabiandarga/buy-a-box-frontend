@@ -31,9 +31,7 @@ function App() {
   const [sets, setSets] = useState([]);
 
   useEffect(() => {
-    fetchSets().then((data) => {
-      setSets(data);
-    });
+    fetchSets().then(setSets);
     fetchData().then((data) => {
       setAllItems(data);
       calculateOptions(data);
