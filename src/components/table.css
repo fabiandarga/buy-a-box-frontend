@@ -9,20 +9,11 @@
   border-top: 1px solid #ddd;
 }
 
-.inscriptions { 
-  display: none;
-}
-
 th,td {
   text-align: left;
   padding: 16px;
 }
+
 tr:nth-child(even) {
   background-color: #f2f2f2;
-}
-
-@media ( min-width: 650px ) {
-	.inscriptions{ 
-    display: block;
-  }
 }

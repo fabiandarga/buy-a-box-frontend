@@ -4,10 +4,14 @@ import Button from './general/Button';
 import LanguageFlag from './general/LanguageFlag';
 import './productRow.css';
 
+const re = /http[s]?:\/\/([^/]*).*/;
+
 function ProduktRow(props) {
-  const { language, price, shipping, shop, url } = props;
+  const { language, price, shipping, url, shop } = props;
 
   const shopHref = url;
+  const domainMatch = url.match(re);
+  const title = domainMatch ? domainMatch[1] : shop;
 
   return (
     <article className="productRow">
@@ -25,7 +29,7 @@ function ProduktRow(props) {
       </div>
       <div className="shop">
         <a href={shopHref} target="_blank" rel="noreferrer">
-          {shop}
+          {title}
         </a>
       </div>
       <div className="btnToShop">

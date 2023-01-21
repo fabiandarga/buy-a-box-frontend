@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import ProductRow from './ProductRow';
 import './table.css';
@@ -33,26 +34,17 @@ function Table(props) {
 
   return (
     <section className="tableContent">
-      <div className="inscriptions">
-        <div> </div>
-        <div>Preis</div>
-        <div>Versand</div>
-        <div>Shop</div>
-        <div> </div>
-      </div>
       {items.map((item, index) => (
-        <>
+        <React.Fragment key={`hr-${item._id}`}>
           {index > 0 && <hr />}
           <ProductRow
-            // eslint-disable-next-line no-underscore-dangle
-            key={item._id}
             language={item.lang}
             price={item.price}
             shop={item.shop}
             shipping={getShopShippingForItem(item, shops)}
             url={getShopUrlForItem(item, shops)}
           />
-        </>
+        </React.Fragment>
       ))}
     </section>
   );
