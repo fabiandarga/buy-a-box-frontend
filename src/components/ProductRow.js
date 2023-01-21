@@ -1,4 +1,3 @@
-/* eslint-disable prefer-const */
 import React from 'react';
 import Button from './general/Button';
 import LanguageFlag from './general/LanguageFlag';
@@ -6,7 +5,7 @@ import './productRow.css';
 
 const re = /http[s]?:\/\/([^/]*).*/;
 
-function ProduktRow(props) {
+function ProductRow(props) {
   const { language, price, shipping, url, shop } = props;
 
   const shopHref = url;
@@ -43,4 +42,4 @@ function ProduktRow(props) {
   );
 }
 
-export default ProduktRow;
+export default ProductRow;
