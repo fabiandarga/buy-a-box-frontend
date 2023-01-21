@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Table from '../components/Table';
 import SearchOption from '../components/SearchOption';
 import FilterConfig from '../config/filter';
