@@ -32,18 +32,17 @@ function Table(props) {
   const { shops, items } = props;
 
   return (
-    <table className="tableContent">
-      <thead>
-        <tr className="inscriptions">
-          <th> </th>
-          <th>Preis</th>
-          <th>Versand</th>
-          <th>Shop</th>
-          <th> </th>
-        </tr>
-      </thead>
-      <tbody>
-        {items.map((item) => (
+    <section className="tableContent">
+      <div className="inscriptions">
+        <div> </div>
+        <div>Preis</div>
+        <div>Versand</div>
+        <div>Shop</div>
+        <div> </div>
+      </div>
+      {items.map((item, index) => (
+        <>
+          {index > 0 && <hr />}
           <ProductRow
             // eslint-disable-next-line no-underscore-dangle
             key={item._id}
@@ -53,9 +52,9 @@ function Table(props) {
             shipping={getShopShippingForItem(item, shops)}
             url={getShopUrlForItem(item, shops)}
           />
-        ))}
-      </tbody>
-    </table>
+        </>
+      ))}
+    </section>
   );
 }
 

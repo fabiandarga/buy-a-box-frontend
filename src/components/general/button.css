@@ -11,26 +11,32 @@
   background-color: #15C5CE;
   border-radius: 4px; 
   border: none;
+  cursor: pointer;
+}
+
+.button.full-width {
+  width: 100%;
 }
 
 .button.small {
   font-size: 16px; 
 }
 
-.button-outline {   
+.button.xs {
+  font-size: 14px; 
+}
+
+.button.button-outline {   
   padding: 5px 10px;
-  border: 1px solid #E1E1E1;  
-  background-color: #FFFFFF; 
-  color: #4B4B4B;
-  border-radius: 4px;
+  border: 1px solid #15C5CE;
+  background-color: transparent;
+  color: #15C5CE;
 } 
 
 .button-outline:hover{ 
-  color: #47CFD6; 
-  border: 1px solid #47CFD6;  
+  background-color: white;
 } 
 
 .button-outline:active {  
-  color: #00ABB6; 
-  border: 2px solid #00ABB6;  
+  background-color: white;
 }

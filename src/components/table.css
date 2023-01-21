@@ -1,10 +1,16 @@
 .tableContent {
   max-width: 1000px; 
-  margin: 0 auto;
+  margin: 0 auto 20px;
 }
 
-.inscriptions{ 
-  visibility: hidden;
+.tableContent hr {
+  margin: 15px 20px;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+.inscriptions { 
+  display: none;
 }
 
 th,td {
@@ -17,6 +23,6 @@ tr:nth-child(even) {
 
 @media ( min-width: 650px ) {
 	.inscriptions{ 
-    visibility: visible;
+    display: block;
   }
 }

@@ -3,22 +3,26 @@ import React from 'react';
 import './button.css';
 
 function Button(props) {
-  const { onClick, text, variant, size, children } = props;
+  const { onClick, text, variant, size, children, fullWidth } = props;
 
   let className = 'button';
   if (variant === 'outline') {
-    className = 'button-outline';
+    className += ' button-outline';
   }
   if (size === 'small') {
     className += ' small';
   }
+  if (size === 'xs') {
+    className += ' xs';
+  }
+  if (fullWidth) {
+    className += ' full-width';
+  }
 
   return (
-    <div>
-      <button type="button" onClick={onClick} className={className}>
-        {text || children}
-      </button>
-    </div>
+    <button type="button" onClick={onClick} className={className}>
+      {text || children}
+    </button>
   );
 }
 

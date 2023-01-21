@@ -10,28 +10,32 @@ function ProduktRow(props) {
   const shopHref = url;
 
   return (
-    <tr className="comparisonTable">
-      <td className="editionProductLanguage">
-        <a href={shopHref}>
+    <article className="productRow">
+      <div className="editionProductLanguage">
+        <a href={shopHref} target="_blank" rel="noreferrer">
           <LanguageFlag language={language} />
         </a>
-      </td>
-      <td className="price">
-        <a href={shopHref}>{`${price.replace('.', ',')}€`}</a>
-      </td>
-      <td className="shipping">
-        <div className="shippingHeadlineForMobile">LieferKosten</div>
-        <li>{shipping}</li>
-      </td>
-      <td className="shop">
-        <a href={shopHref}>{shop}</a>
-      </td>
-      <td className="btnToShop">
-        <a href={shopHref}>
-          <Button text="Jetzt kaufen" variant="outline" size="small" />
+      </div>
+      <div className="price">
+        <a href={shopHref} target="_blank" rel="noreferrer">{`${price.replace('.', ',')}€`}</a>
+      </div>
+      <div className="shipping">
+        <span className="shippingHeadlineForMobile">LieferKosten:</span>
+        <span>{shipping}</span>
+      </div>
+      <div className="shop">
+        <a href={shopHref} target="_blank" rel="noreferrer">
+          {shop}
         </a>
-      </td>
-    </tr>
+      </div>
+      <div className="btnToShop">
+        <a href={shopHref} target="_blank" rel="noreferrer">
+          <Button variant="outline" fullWidth size="xs">
+            Zum Shop
+          </Button>
+        </a>
+      </div>
+    </article>
   );
 }
 
