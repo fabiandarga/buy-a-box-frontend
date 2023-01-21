@@ -5,6 +5,8 @@ import { comparisonFilter } from '../config/filter';
 import { optionsToStrings } from '../utils/array-utils';
 import { fetchDataCompareProducts, fetchShops } from '../utils/api';
 
+import './compareProducts.css';
+
 function CompareProducts(props) {
   const {
     selectedProducts,
@@ -41,18 +43,26 @@ function CompareProducts(props) {
     setTypeFilter(optionsToStrings(Array.isArray(selected) ? selected : [selected]));
   };
 
-  const filterItems = allItems.filter((item) => {
-    if (productFilter.length > 0 && !productFilter.includes(item.code)) {
-      return false;
-    }
-    if (typeFilter.length > 0 && !typeFilter.includes(item.type)) {
-      return false;
-    }
-    if (languageFilter.length > 0 && !languageFilter.includes(item.lang)) {
-      return false;
-    }
-    return true;
-  });
+  const title = productFilter.length
+    ? allItems.find((item) => item.code === productFilter[0])?.name
+    : '';
+
+  const iconClassname = `ss ss-${productFilter[0].toLowerCase()}`;
+
+  const filterItems = allItems
+    .filter((item) => {
+      if (productFilter.length > 0 && !productFilter.includes(item.code)) {
+        return false;
+      }
+      if (typeFilter.length > 0 && !typeFilter.includes(item.type)) {
+        return false;
+      }
+      if (languageFilter.length > 0 && !languageFilter.includes(item.lang)) {
+        return false;
+      }
+      return true;
+    })
+    .sort((itemA, itemB) => itemA.price - itemB.price);
 
   return (
     <div>
@@ -69,7 +79,13 @@ function CompareProducts(props) {
           typeOptions={typeOptions}
         />
       </div>
-      <Table items={allItems} shops={shops} filterItems={filterItems} />
+      <h2 className="compareTitle">
+        <i className={iconClassname} />
+        <span className="product">{title}</span>
+        <span> - </span>
+        <span className="type">{typeFilter} Display</span>
+      </h2>
+      <Table shops={shops} items={filterItems} />
     </div>
   );
 }

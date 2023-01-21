@@ -17,11 +17,7 @@ function LanguageFlag(props) {
     languageFlag = iconJapan;
   }
 
-  return (
-    <div>
-      <img src={languageFlag} alt="Language" language={language} />
-    </div>
-  );
+  return <img src={languageFlag} alt="Language" language={language} className="flag" />;
 }
 
 export default LanguageFlag;

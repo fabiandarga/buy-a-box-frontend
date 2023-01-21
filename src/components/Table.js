@@ -29,14 +29,13 @@ function getShopShippingForItem(item, shops) {
 }
 
 function Table(props) {
-  const { shops, filterItems } = props;
+  const { shops, items } = props;
 
   return (
     <table className="tableContent">
       <thead>
         <tr className="inscriptions">
           <th> </th>
-          <th>Name</th>
           <th>Preis</th>
           <th>Versand</th>
           <th>Shop</th>
@@ -44,18 +43,15 @@ function Table(props) {
         </tr>
       </thead>
       <tbody>
-        {filterItems.map((item) => (
+        {items.map((item) => (
           <ProductRow
             // eslint-disable-next-line no-underscore-dangle
             key={item._id}
-            set={item.name}
-            productType={item.type}
             language={item.lang}
             price={item.price}
             shop={item.shop}
             shipping={getShopShippingForItem(item, shops)}
             url={getShopUrlForItem(item, shops)}
-            code={item.code}
           />
         ))}
       </tbody>

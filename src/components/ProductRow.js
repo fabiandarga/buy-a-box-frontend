@@ -5,23 +5,15 @@ import LanguageFlag from './general/LanguageFlag';
 import './productRow.css';
 
 function ProduktRow(props) {
-  const { set, productType, language, price, shipping, shop, code, url } = props;
+  const { language, price, shipping, shop, url } = props;
 
-  const iconClassname = `ss ss-${code}`;
   const shopHref = url;
 
   return (
     <tr className="comparisonTable">
-      <td className="icon">
-        {' '}
-        <i className={iconClassname} />{' '}
-      </td>
       <td className="editionProductLanguage">
         <a href={shopHref}>
-          <div>{set}</div>
-          <div className="productLanguage">
-            {productType}-<LanguageFlag language={language} />
-          </div>
+          <LanguageFlag language={language} />
         </a>
       </td>
       <td className="price">
