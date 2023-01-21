@@ -1,5 +1,5 @@
 import React from 'react';
-import ProduktRow from './ProduktRow';
+import ProductRow from './ProductRow';
 import './table.css';
 
 function findShopForId(id, shops) {
@@ -32,7 +32,7 @@ function Table(props) {
   const { shops, filterItems } = props;
 
   return (
-    <div className="tableContent">
+    <table className="tableContent">
       <tr className="inscriptions">
         <th> </th>
         <th>Name</th>
@@ -42,8 +42,9 @@ function Table(props) {
         <th> </th>
       </tr>
       {filterItems.map((item) => (
-        <ProduktRow
-          key={item.id}
+        <ProductRow
+          // eslint-disable-next-line no-underscore-dangle
+          key={item._id}
           edition={item.name}
           produkt={item.type}
           language={item.lang}
@@ -54,7 +55,7 @@ function Table(props) {
           code={item.code}
         />
       ))}
-    </div>
+    </table>
   );
 }
 

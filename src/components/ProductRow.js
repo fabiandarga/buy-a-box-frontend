@@ -2,10 +2,10 @@
 import React from 'react';
 import Button from './general/Button';
 import LanguageFlag from './general/LanguageFlag';
-import './produktRow.css';
+import './productRow.css';
 
 function ProduktRow(props) {
-  const { edition, produkt, language, price, shipping, shop, code, url } = props;
+  const { set, productType, language, price, shipping, shop, code, url } = props;
 
   const iconClassname = `ss ss-${code}`;
   const shopHref = url;
@@ -18,9 +18,9 @@ function ProduktRow(props) {
       </td>
       <td className="editionProductLanguage">
         <a href={shopHref}>
-          <div>{edition}</div>
+          <div>{set}</div>
           <div className="productLanguage">
-            {produkt}-<LanguageFlag language={language} />
+            {productType}-<LanguageFlag language={language} />
           </div>
         </a>
       </td>
