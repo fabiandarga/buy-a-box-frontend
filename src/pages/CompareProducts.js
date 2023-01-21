@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Table from '../components/Table';
 import SearchOption from '../components/SearchOption';
-import FilterConfig from '../config/filter';
+import { comparisonFilter } from '../config/filter';
 import { optionsToStrings } from '../utils/array-utils';
 import { fetchDataCompareProducts, fetchShops } from '../utils/api';
 
@@ -16,9 +16,9 @@ function CompareProducts(props) {
   } = props;
   const [allItems, setAllItems] = useState([]);
   const [shops, setShops] = useState([]);
-  const [productFilter, setProductFilter] = useState(FilterConfig.productFilter);
-  const [languageFilter, setLanguageFilter] = useState(FilterConfig.languageFilter);
-  const [typeFilter, setTypeFilter] = useState(FilterConfig.typeFilter);
+  const [productFilter, setProductFilter] = useState(comparisonFilter.productFilter);
+  const [languageFilter, setLanguageFilter] = useState(comparisonFilter.languageFilter);
+  const [typeFilter, setTypeFilter] = useState(comparisonFilter.typeFilter);
 
   useEffect(() => {
     fetchDataCompareProducts().then((data) => {
