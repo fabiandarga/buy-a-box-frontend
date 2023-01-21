@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import NavbarLinks from './general/NavbarLinks';
+import NavbarLink from './general/NavbarLinks';
 import './header.css';
 
 function getActiveLinkId(pathname) {
@@ -33,21 +33,21 @@ function Header() {
         </h1>
       </div>
       <div className="navContainer">
-        <NavbarLinks
+        <NavbarLink
           onClick={() => setActivLink('preisentwicklung')}
           isActive={activelink === 'preisentwicklung'}
           to="/"
         >
           Preisentwicklung
-        </NavbarLinks>
+        </NavbarLink>
 
-        <NavbarLinks
+        <NavbarLink
           onClick={() => setActivLink('preisvergleich')}
           isActive={activelink === 'preisvergleich'}
           to="/compare"
         >
           Preisvergleich
-        </NavbarLinks>
+        </NavbarLink>
       </div>
     </div>
   );

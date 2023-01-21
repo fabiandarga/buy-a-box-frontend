@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './navbarLinks.css';
 
-function NavbarLinks(props) {
+function NavbarLink(props) {
   const { children, onClick, to, isActive } = props;
 
   return (
-    <Link onClick={onClick} className={isActive ? 'active' : 'route-style'} to={to}>
-      <span className="navbarRoutes">{children}</span>
+    <Link onClick={onClick} className={`navbarLink ${isActive ? 'active' : ''}`} to={to}>
+      <span>{children}</span>
     </Link>
   );
 }
 
-export default NavbarLinks;
+export default NavbarLink;
