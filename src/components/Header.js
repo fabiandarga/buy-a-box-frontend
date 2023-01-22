@@ -5,22 +5,21 @@ import './header.css';
 
 function getActiveLinkId(pathname) {
   switch (pathname) {
+    case '/history':
+      return 'preisentwicklung';
     case '/':
-      return 'preisentwicklung';
-    case '/compare':
-      return 'preisvergleich';
     default:
-      return 'preisentwicklung';
+      return 'preisvergleich';
   }
 }
 
 function Header() {
-  const [activelink, setActivLink] = useState('');
+  const [activeLink, setActiveLink] = useState('');
 
   const location = useLocation();
 
   useEffect(() => {
-    setActivLink(getActiveLinkId(location.pathname));
+    setActiveLink(getActiveLinkId(location.pathname));
   }, [location]);
   return (
     <div className="header">
@@ -34,17 +33,17 @@ function Header() {
       </div>
       <div className="navContainer">
         <NavbarLink
-          onClick={() => setActivLink('preisentwicklung')}
-          isActive={activelink === 'preisentwicklung'}
-          to="/"
+          onClick={() => setActiveLink('preisentwicklung')}
+          isActive={activeLink === 'preisentwicklung'}
+          to="/history"
         >
           Preisentwicklung
         </NavbarLink>
 
         <NavbarLink
-          onClick={() => setActivLink('preisvergleich')}
-          isActive={activelink === 'preisvergleich'}
-          to="/compare"
+          onClick={() => setActiveLink('preisvergleich')}
+          isActive={activeLink === 'preisvergleich'}
+          to="/"
         >
           Preisvergleich
         </NavbarLink>
