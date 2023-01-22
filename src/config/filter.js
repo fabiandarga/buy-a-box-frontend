@@ -6,7 +6,7 @@ export default {
 };
 
 export const comparisonFilter = {
-  productFilter: ['ONE'],
+  productFilter: 'ONE',
   languageFilter: ['eng', 'deu'],
-  typeFilter: ['draft'],
+  typeFilter: 'draft',
 };

@@ -1,50 +1,47 @@
 import React from 'react';
 import DropDownSelect from './DropDownSelect';
 import { stringsToOptions } from '../utils/array-utils';
-import { getProductTitle } from '../utils/set-utils';
+import { productCodeToOption } from '../utils/options-utils';
 import './searchOption.css';
 
-function SearchOption(props) {
-  const {
-    selectedProducts,
-    selectedLanguage,
-    selectedType,
-    onProductsChange,
-    onLanguageChange,
-    onTypeChange,
-    productOptions,
-    languageOptions,
-    typeOptions,
-  } = props;
-
-  const productFilter = productOptions.map((item) => ({
-    label: getProductTitle(item),
-    value: item.code,
-  }));
-  const languageFilter = stringsToOptions(languageOptions);
-  const typeFilter = stringsToOptions(typeOptions);
+function SearchOption({
+  productValue,
+  languageValues,
+  typeValue,
+  onProductChange,
+  onLanguageChange,
+  onTypeChange,
+  productOptions,
+  languageOptions,
+  typeOptions,
+}) {
   return (
     <div className="searchOption">
       <div className="searchOptionProduct">
         <span>Erweiterungen</span>
         <DropDownSelect
           variant="product"
-          options={productFilter}
-          value={selectedProducts}
-          onChange={onProductsChange}
+          options={productOptions.map(productCodeToOption)}
+          value={productCodeToOption(productValue)}
+          onChange={onProductChange}
         />
       </div>
       <div className="searchOptionLanguage">
         <span>Sprache</span>
         <DropDownSelect
-          options={languageFilter}
-          value={selectedLanguage}
+          multi
+          options={stringsToOptions(languageOptions)}
+          value={stringsToOptions(languageValues)}
           onChange={onLanguageChange}
         />
       </div>
       <div className="searchOptionType">
         <span>Produkttyp</span>
-        <DropDownSelect options={typeFilter} value={selectedType} onChange={onTypeChange} />
+        <DropDownSelect
+          options={stringsToOptions(typeOptions)}
+          value={{ label: typeValue, value: typeValue }}
+          onChange={onTypeChange}
+        />
       </div>
     </div>
   );

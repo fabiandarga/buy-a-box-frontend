@@ -1,5 +1,6 @@
 import React from 'react';
 import { components } from 'react-select';
+import SetSymbol from '../components/SetSymbol';
 
 const { Option } = components;
 
@@ -8,7 +9,7 @@ export function ProductOption(props) {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <Option {...props}>
-      <i className={`ss ss-${data.value.toLowerCase()}`} /> {data.label}
+      <SetSymbol code={data.value} /> {data.label}
     </Option>
   );
 }
