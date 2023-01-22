@@ -20,7 +20,7 @@ function DefaultValueContainer(props) {
  * props.onChange
  */
 function DropDownSelect(props) {
-  const { options, value, onChange, variant, multi } = props;
+  const { options, value, onChange, variant, multi = false } = props;
 
   let CustomSelectOption = DefaultOption;
   let CustomSelectValue = DefaultValueContainer;
@@ -31,19 +31,13 @@ function DropDownSelect(props) {
     CustomSelectValue = ValueOption;
   }
 
-  let isMulti = false;
-
-  if (multi === 'multi') {
-    isMulti = true;
-  }
-
   return (
     <div>
       <Select
         defaultValue={value}
-        closeMenuOnSelect={false}
+        closeMenuOnSelect={!multi}
         onChange={onChange}
-        isMulti={isMulti}
+        isMulti={multi}
         options={options}
         components={{ Option: CustomSelectOption, MultiValueLabel: CustomSelectValue }}
       />

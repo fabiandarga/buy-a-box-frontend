@@ -1,5 +1,6 @@
 import React from 'react';
 import Tag from './Tag';
+import SetSymbol from '../SetSymbol';
 
 import './tags.css';
 
@@ -26,7 +27,7 @@ function Tags(props) {
           {productFilter.length === 0 && <Tag>Alle Erweiterungen</Tag>}
           {productFilter.map((filter) => (
             <Tag key={filter}>
-              <i className={`ss ss-${filter.toLowerCase()}`} /> {filter}
+              <SetSymbol code={filter} /> {filter}
             </Tag>
           ))}
         </div>

@@ -10,7 +10,8 @@ export const optionsToStrings = (options) => options.map((option) => option.valu
  * @param {string[]} array
  * @return {{label:string, value:string}[]} options
  */
-export const stringsToOptions = (array) => array.map((str) => ({ value: str, label: str }));
+export const stringsToOptions = (array) =>
+  array.map((str) => ({ label: str[0].toUpperCase() + str.substring(1), value: str }));
 
 /**
  *

@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
@@ -54,20 +54,11 @@ function App() {
       <div className="content-app">
         <Routes>
           <Route
-            path="/"
+            path="/history"
             element={
               <div>
                 <div className="page">
                   <Dashboard
-                    // filterItems={filterItems}
-                    // shopFilter={shopFilter}
-                    // productFilter={productFilter}
-                    // languageFilter={languageFilter}
-                    // typeFilter={typeFilter}
-                    // setShopFilter={setShopFilter}
-                    // setProductFilter={setProductFilter}
-                    // setLanguageFilter={setLanguageFilter}
-                    // setTypeFilter={setTypeFilter}
                     allItems={allItems}
                     shopsOptions={shopsOptions}
                     extendedProductOptions={extendedProductOptions}
@@ -84,7 +75,7 @@ function App() {
             }
           />
           <Route
-            path="/compare"
+            path="/"
             element={
               <CompareProducts
                 productOptions={extendedProductOptions}

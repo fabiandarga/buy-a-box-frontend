@@ -1,26 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import NavbarLinks from './general/NavbarLinks';
+import NavbarLink from './general/NavbarLinks';
 import './header.css';
 
 function getActiveLinkId(pathname) {
   switch (pathname) {
+    case '/history':
+      return 'preisentwicklung';
     case '/':
-      return 'preisentwicklung';
-    case '/compare':
-      return 'preisvergleich';
     default:
-      return 'preisentwicklung';
+      return 'preisvergleich';
   }
 }
 
 function Header() {
-  const [activelink, setActivLink] = useState('');
+  const [activeLink, setActiveLink] = useState('');
 
   const location = useLocation();
 
   useEffect(() => {
-    setActivLink(getActiveLinkId(location.pathname));
+    setActiveLink(getActiveLinkId(location.pathname));
   }, [location]);
   return (
     <div className="header">
@@ -33,21 +32,21 @@ function Header() {
         </h1>
       </div>
       <div className="navContainer">
-        <NavbarLinks
-          onClick={() => setActivLink('preisentwicklung')}
-          isActive={activelink === 'preisentwicklung'}
-          to="/"
+        <NavbarLink
+          onClick={() => setActiveLink('preisentwicklung')}
+          isActive={activeLink === 'preisentwicklung'}
+          to="/history"
         >
           Preisentwicklung
-        </NavbarLinks>
+        </NavbarLink>
 
-        <NavbarLinks
-          onClick={() => setActivLink('preisvergleich')}
-          isActive={activelink === 'preisvergleich'}
-          to="/compare"
+        <NavbarLink
+          onClick={() => setActiveLink('preisvergleich')}
+          isActive={activeLink === 'preisvergleich'}
+          to="/"
         >
           Preisvergleich
-        </NavbarLinks>
+        </NavbarLink>
       </div>
     </div>
   );

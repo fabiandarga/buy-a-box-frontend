@@ -2,6 +2,7 @@
 const BASE_URL = process.env.REACT_APP_SERVER_URL;
 // const BASE_URL = 'https://buy-a-box-backend.herokuapp.com';
 const DATA_PATH = `${BASE_URL}/data/`;
+const LATEST_PATH = `${BASE_URL}/data/latest`;
 const SETS_PATH = `${BASE_URL}/sets/`;
 const SHOPS_PATH = `${BASE_URL}/shops/`;
 
@@ -34,10 +35,10 @@ export async function fetchShops() {
     .catch((err) => err);
 }
 
-export async function fetchDataCompareProducts() {
-  // return Set als Objekt
-  const url = new URL(DATA_PATH);
-  url.searchParams.append('from', new Date(Date.now() - 86400000).toISOString().slice(0, 10));
+export async function fetchDataCompareProducts(product, type) {
+  const url = new URL(LATEST_PATH);
+  url.searchParams.append('product', product);
+  url.searchParams.append('type', type);
   return await fetch(url)
     .then((response) => response.json())
     .catch((err) => err);

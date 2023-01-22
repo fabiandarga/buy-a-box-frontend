@@ -1,0 +1,16 @@
+.compareTitle {
+    text-align: center;
+    margin: 30px 20px 20px;
+}
+
+.compareTitle i {
+    font-size: 2em;
+}
+
+.compareTitle .product {
+    margin-left: 10px;
+}
+
+.compareTitle .type {
+    text-transform: capitalize;
+}
