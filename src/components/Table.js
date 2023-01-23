@@ -9,7 +9,6 @@ function findShopForId(id, shops) {
 
 function Table(props) {
   const { shops, items } = props;
-
   return (
     <section className="tableContent">
       {items
@@ -19,6 +18,7 @@ function Table(props) {
             ...item,
             shipping: shop?.shipping || '',
             url: shop?.url || '',
+            logoUrl: shop?.logoUrl || '',
           };
         })
         .map((item, index) => (
@@ -28,6 +28,8 @@ function Table(props) {
               language={item.lang}
               price={item.price}
               shop={item.shop}
+              logoUrl={item.logoUrl}
+              shopLogo={item.shopUrl}
               shipping={item.shipping}
               url={item.url}
             />

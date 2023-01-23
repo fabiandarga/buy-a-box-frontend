@@ -6,7 +6,7 @@ import './productRow.css';
 const re = /http[s]?:\/\/([^/]*).*/;
 
 function ProductRow(props) {
-  const { language, price, shipping, url, shop } = props;
+  const { language, price, shipping, url, logoUrl, shop } = props;
 
   const shopHref = url;
   const domainMatch = url.match(re);
@@ -26,10 +26,15 @@ function ProductRow(props) {
         <span className="shippingHeadlineForMobile">LieferKosten:</span>
         <span>{shipping}</span>
       </div>
-      <div className="shop">
-        <a href={shopHref} target="_blank" rel="noreferrer">
-          {title}
-        </a>
+      <div className="logoUrlAndShop">
+        <div className="logoUrl">
+          <img src={logoUrl} alt="shop logo" />
+        </div>
+        <div className="shop">
+          <a href={shopHref} target="_blank" rel="noreferrer">
+            {title}
+          </a>
+        </div>
       </div>
       <div className="btnToShop">
         <a href={shopHref} target="_blank" rel="noreferrer">
