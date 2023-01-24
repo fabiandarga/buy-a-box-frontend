@@ -19,11 +19,11 @@ function CompareProducts(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const paht = `product=${selectedProduct.toLowerCase()}&type=${selectedType}&lang=${selectedLanguages
+    const path = `product=${selectedProduct.toLowerCase()}&type=${selectedType}&lang=${selectedLanguages
       .slice(',')
       .join('&lang=')}`;
     navigate({
-      search: paht,
+      search: path,
     });
   }, [selectedProduct, selectedType, selectedLanguages]);
 
