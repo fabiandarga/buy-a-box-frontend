@@ -29,7 +29,6 @@ function Table(props) {
               price={item.price}
               shop={item.shop}
               logoUrl={item.logoUrl}
-              shopLogo={item.shopUrl}
               shipping={item.shipping}
               url={item.url}
             />
