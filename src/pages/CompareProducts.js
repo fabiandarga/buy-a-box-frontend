@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Table from '../components/Table';
 import SetSymbol from '../components/SetSymbol';
 import SearchOption from '../components/SearchOption';
@@ -10,13 +11,21 @@ import './compareProducts.css';
 
 function CompareProducts(props) {
   const { productOptions, languageOptions, typeOptions } = props;
-
   const [items, setItems] = useState([]);
   const [shops, setShops] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(comparisonFilter.productFilter);
-  // eslint-disable-next-line no-unused-vars
   const [selectedLanguages, setSelectedLanguages] = useState(comparisonFilter.languageFilter);
   const [selectedType, setSelectedType] = useState(comparisonFilter.typeFilter);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const path = `product=${selectedProduct.toLowerCase()}&type=${selectedType}&lang=${selectedLanguages
+      .slice(',')
+      .join('&lang=')}`;
+    navigate({
+      search: path,
+    });
+  }, [selectedProduct, selectedType, selectedLanguages]);
 
   useEffect(() => {
     fetchShops().then(setShops);
