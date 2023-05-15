@@ -1,12 +1,12 @@
 export default {
-  productFilter: ['ONE'],
+  productFilter: ['MAT'],
   languageFilter: ['eng'],
   typeFilter: ['draft', 'set', 'collector'],
   shopFilter: [],
 };
 
 export const comparisonFilter = {
-  productFilter: 'ONE',
+  productFilter: 'MAT',
   languageFilter: ['eng', 'deu'],
   typeFilter: 'draft',
 };
