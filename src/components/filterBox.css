@@ -27,3 +27,7 @@
 .filter-examples {
   padding-top: 30px;
 }
+
+.input-error {
+  color: #340070;
+}

@@ -40,7 +40,10 @@ function App() {
 
   const handleFilterSaved = () => {
     // reload data with set time range
-    fetchData(from, to);
+    fetchData(from, to).then((data) => {
+      setAllItems(data);
+      calculateOptions(data);
+    });
   };
 
   const extendedProductOptions = productOptions

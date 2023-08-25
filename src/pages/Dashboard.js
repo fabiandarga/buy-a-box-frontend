@@ -27,7 +27,7 @@ function Dashboard(props) {
   } = props;
 
   const filterItems = allItems.filter((item) => {
-    if (productFilter.length > 0 && !productFilter.includes(item.code)) {
+    if (productFilter.length === 0 || !productFilter.includes(item.code)) {
       return false;
     }
     if (typeFilter.length > 0 && !typeFilter.includes(item.type)) {

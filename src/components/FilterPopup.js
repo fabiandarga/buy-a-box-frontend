@@ -52,6 +52,7 @@ export default function FilterPopup(props) {
             onChange={onShopsChange}
           />
           <div className="section-title">Erweiterungen</div>
+          {!selectedProducts.length && <p className="input-error">Mindestens eine auswählen</p>}
           <DropDownSelect
             multi
             variant="product"

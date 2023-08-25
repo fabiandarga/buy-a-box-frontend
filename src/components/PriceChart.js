@@ -64,7 +64,6 @@ function PriceChart(props) {
   return (
     <Card>
       <div className="priceChart">
-        <noscript>You need to enable JavaScript to see the price chart.</noscript>
         <Line
           data={{
             datasets: newDatasets,

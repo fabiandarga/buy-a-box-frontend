@@ -1,12 +1,12 @@
 export default {
-  productFilter: ['LTR'],
+  productFilter: ['WOE'],
   languageFilter: ['eng'],
   typeFilter: ['draft', 'set', 'collector'],
   shopFilter: [],
 };
 
 export const comparisonFilter = {
-  productFilter: 'LTR',
+  productFilter: 'WOE',
   languageFilter: ['eng', 'deu'],
   typeFilter: 'draft',
 };

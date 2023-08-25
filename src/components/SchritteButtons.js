@@ -26,11 +26,11 @@ function SchritteButtons(props) {
       {SchritteOption.map((schritte) => (
         <Button
           key={schritte.value}
-          className="button-outline"
           onClick={() => {
             onChangeDateHandler(schritte.value);
           }}
           variant="outline"
+          size="small"
           text={schritte.label}
         />
       ))}
